@@ -10,9 +10,11 @@ import {
   ParseIntPipe,
   DefaultValuePipe,
   ValidationPipe,
+  Patch,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamDto } from './dtos/get-users-param.dto';
+import { PatchUserDto } from './dtos/patch-user.dto';
 
 // To make parameters optional, use the ? operator
 @Controller('users')
@@ -41,5 +43,9 @@ export class UsersController {
     const { firstName } = createUserDto;
     console.log(firstName);
     return 'You sent a post req to users endpoint';
+  }
+  @Patch()
+  public patchUser(@Body() patchUserDto: PatchUserDto) {
+    return patchUserDto;
   }
 }
