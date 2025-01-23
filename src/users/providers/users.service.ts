@@ -19,4 +19,12 @@ export class UsersService {
       },
     ];
   }
+
+  public findById(id: number) {
+    return {
+      id: 1234,
+      firstName: 'Alice',
+      lastName: 'Doe',
+    };
+  }
 }
