@@ -47,7 +47,7 @@ export class UsersController {
     type: 'number',
     required: false,
     description:
-      'The postition of the page number that you want the API to return',
+      'The position of the page number that you want the API to return',
     example: 1,
   })
   public getUsers(
