@@ -8,7 +8,7 @@ export class PostsService {
     private readonly usersService: UsersService,
   ) {}
   public findAll(userId: string) {
-    const user = this.usersService.findById(userId);
+    const user = this.usersService.findOneById(userId);
     return [
       {
         user: user,
