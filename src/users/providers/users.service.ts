@@ -20,11 +20,11 @@ export class UsersService {
     ];
   }
 
-  public findById(id: number) {
+  public findById(id: string) {
     return {
       id: 1234,
       firstName: 'Alice',
-      lastName: 'Doe',
+      email: 'alice@doe.com',
     };
   }
 }
