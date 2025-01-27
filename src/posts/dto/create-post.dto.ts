@@ -1,7 +1,5 @@
 import {
   IsArray,
-  IsDate,
-  IsEmail,
   IsEnum,
   IsISO8601,
   IsJSON,
@@ -11,11 +9,13 @@ import {
   IsString,
   IsUrl,
   Matches,
-  MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
 import { postType } from '../enums/postType.enum';
 import { postStatus } from '../enums/postStatus.enum';
+import { CreatePostMetaOptionsDto } from './create-post-meta-options.dto';
+import { Type } from 'class-transformer';
 
 export class CreatePostDto {
   @IsString()
@@ -63,7 +63,13 @@ export class CreatePostDto {
   @MinLength(3, { each: true }) // Each value should have a length of 3
   tags?: string[];
 
-  // @IsArray()
-  // @IsNotEmpty()
-  metaOptions: [{ key: 'sidebarEnabled'; value: true }];
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => CreatePostMetaOptionsDto)
+  // Type decorator
+  // Matches the incoming req to the dto
+  // Creates an instance of the dto
+  // All the properties are validated against the dto
+  metaOptions: CreatePostMetaOptionsDto;
 }
