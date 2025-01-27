@@ -97,3 +97,63 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## Compodoc Documentation
+
+### Script
+
+Let me name this as doc.
+
+It should be a comma over here.
+
+Now this script itself a little bit verbose and lengthy, and I'll try to explain all the parts of the
+
+script as we go.
+
+So first of all, we need to use NPCs and along with Compo Doc in order to generate the Compo Doc documentation.
+
+So we use at the rate compo doc, which is the name of the package.
+
+So compo doc slash compo doc.
+
+So this basically triggers the compo doc package for us.
+
+And then we need to provide it certain configurations.
+
+The first one is the path to the pts config file.
+
+So hyphen path to the pts config file TTS config file is within the root of the project itself.
+
+So we use tsconfig.json.
+
+So it's going to pick up this particular config file which is there in the root of our project.
+
+So this particular TTS config file over here.
+
+Now once we have provided the TTS config file, the next flag that we want to add is the s flag.
+
+Now what this flag does is that it instructs compared to serve generated documentation on a port.
+
+Now, having said that, I want to have a specific port number as well.
+
+So I use hyphen hyphen port.
+
+And let's serve the documentation on port 3001.
+
+With that, I also want to enable Compo doc to watch for changes within my code.
+
+So whenever I'm writing any new code, it should watch for changes and regenerate the documentation
+
+whenever needed.
+
+Finally, I want to give it a specific directory for generating the documentation so we can use a hyphen
+
+d flag, which instructs combo doc to generate the documentation within a specific directory, which
+
+we can pass as an argument.
+
+So here I'm saying within the root of my project, just use the documentation directory to generate
+
+your documentation.
+
+The details can be seen at localhost:3001

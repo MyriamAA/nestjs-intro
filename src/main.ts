@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
+// Use https://jsdoc.app/about-getting-started for more details on how to document (for compodoc)
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // Add the validations everywhere instead of doing it per controller
