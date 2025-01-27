@@ -4,7 +4,6 @@ import {
   IsISO8601,
   IsJSON,
   IsNotEmpty,
-  IsObject,
   IsOptional,
   IsString,
   IsUrl,
@@ -12,8 +11,8 @@ import {
   MinLength,
   ValidateNested,
 } from 'class-validator';
-import { postType } from '../enums/postType.enum';
-import { postStatus } from '../enums/postStatus.enum';
+import { PostType } from '../enums/post-type.enum';
+import { PostStatus } from '../enums/post-status.enum';
 import { CreatePostMetaOptionsDto } from './create-post-meta-options.dto';
 import { Type } from 'class-transformer';
 
@@ -23,45 +22,45 @@ export class CreatePostDto {
   @IsNotEmpty()
   title: string;
 
-  @IsEnum(postType)
+  @IsEnum(PostType)
   @IsNotEmpty()
-  postType: postType;
+  postType: string;
 
   @IsString()
   @IsNotEmpty()
-  @Matches(/^[s-z0-9]+(?:-[a-z0-9]+)*$/, {
+  @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
-      'A slug should be all small letters and uses only hyphens and without spaces. For example "my-url"',
-  }) /* Hyphens, numbers and characters */
+      'A slug should be all small letters and uses only "-" and without spaces. For example "my-url"',
+  })
   slug: string;
 
-  @IsEnum(postStatus)
+  @IsEnum(PostStatus)
   @IsNotEmpty()
-  status: postStatus;
+  status: PostStatus;
 
   @IsString()
   @IsOptional()
-  content?: string;
+  content: string;
 
   @IsOptional()
   @IsJSON()
-  schema?: string;
+  schema: string;
 
   @IsOptional()
   @IsUrl()
-  featuredImageUrl?: string;
+  featuredImageUrl: string;
 
   @IsISO8601() /* Date format */
   @IsOptional()
-  publishedOn?: Date;
+  publishOn: Date;
 
-  @IsOptional()
   @IsArray()
+  @IsOptional()
   @IsString({
     each: true,
   }) /* To signify that each value in the array is a string */
   @MinLength(3, { each: true }) // Each value should have a length of 3
-  tags?: string[];
+  tags: string[];
 
   @IsOptional()
   @IsArray()
@@ -71,5 +70,5 @@ export class CreatePostDto {
   // Matches the incoming req to the dto
   // Creates an instance of the dto
   // All the properties are validated against the dto
-  metaOptions: CreatePostMetaOptionsDto;
+  metaOptions: CreatePostMetaOptionsDto[];
 }

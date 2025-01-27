@@ -18,6 +18,7 @@ export class PostsController {
 
   @Post()
   public createPost(@Body() createPostDto: CreatePostDto) {
+    console.log(createPostDto);
     return 'You sent a post req to the post endpoint';
   }
 }
