@@ -130,7 +130,10 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Class to connect to Users table and perform operations</p>
+                <p>Service for managing user-related operations in the Users table.</p>
+<p>This service interacts with the Users table to perform CRUD operations.
+It also uses the AuthService to handle authentication-related checks and
+dependencies while ensuring circular dependencies are avoided.</p>
 
             </p>
 
@@ -180,12 +183,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/users/providers/users.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/users/providers/users.service.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructs the UsersService with necessary dependencies.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -194,6 +199,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -208,6 +214,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Service for handling authentication-related operations.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -245,14 +257,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="15"
-                                    class="link-to-prism">src/users/providers/users.service.ts:15</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/users/providers/users.service.ts:32</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a list of all users from the database.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -263,6 +277,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -277,6 +292,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>DTO containing filters for user retrieval.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>limit</td>
@@ -289,6 +310,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The maximum number of users to return.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>page</td>
@@ -301,16 +328,23 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The page number for pagination.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{}</code>
+                            <b>Returns : </b>    <code>literal type[]</code>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Array of user objects containing basic details.</p>
+
                             </div>
                 </td>
             </tr>
@@ -338,14 +372,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/users/providers/users.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/users/providers/users.service.ts:59</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a single user by their unique identifier.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -356,6 +392,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -370,16 +407,23 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The unique ID of the user to retrieve.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{ id: number; firstName: string; email: string; }</code>
+                            <b>Returns : </b>    <code>literal type</code>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A user object containing their details.</p>
+
                             </div>
                 </td>
             </tr>
@@ -396,22 +440,41 @@ import { GetUsersParamDto } from &#x27;../dtos/get-users-param.dto&#x27;;
 import { AuthService } from &#x27;src/auth/providers/auth.service&#x27;;
 
 /**
- * Class to connect to Users table and perform operations
+ * Service for managing user-related operations in the Users table.
+ *
+ * This service interacts with the Users table to perform CRUD operations.
+ * It also uses the AuthService to handle authentication-related checks and
+ * dependencies while ensuring circular dependencies are avoided.
  */
 @Injectable()
 export class UsersService {
+  /**
+   * Constructs the UsersService with necessary dependencies.
+   *
+   * @param {AuthService} authService - Service for handling authentication-related operations.
+   */
   constructor(
-    // Injecting auth service to avoid circular dependency
     @Inject(forwardRef(() &#x3D;&gt; AuthService))
     private readonly authService: AuthService,
   ) {}
+
+  /**
+   * Retrieves a list of all users from the database.
+   *
+   * @param {GetUsersParamDto} getUserParamDto - DTO containing filters for user retrieval.
+   * @param {number} limit - The maximum number of users to return.
+   * @param {number} page - The page number for pagination.
+   * @returns {Array&lt;{ firstName: string; email: string }&gt;} Array of user objects containing basic details.
+   */
   public findAll(
     getUserParamDto: GetUsersParamDto,
     limit: number,
     page: number,
-  ) {
+  ): { firstName: string; email: string }[] {
     const isAuth &#x3D; this.authService.isAuth();
-    // Auth service
+    if (!isAuth) {
+      return [];
+    }
     return [
       {
         firstName: &#x27;John&#x27;,
@@ -424,7 +487,17 @@ export class UsersService {
     ];
   }
 
-  public findOneById(id: string) {
+  /**
+   * Retrieves a single user by their unique identifier.
+   *
+   * @param {string} id - The unique ID of the user to retrieve.
+   * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
+   */
+  public findOneById(id: string): {
+    id: number;
+    firstName: string;
+    email: string;
+  } {
     return {
       id: 1234,
       firstName: &#x27;Alice&#x27;,
