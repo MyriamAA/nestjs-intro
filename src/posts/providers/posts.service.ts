@@ -26,20 +26,9 @@ export class PostsService {
     @InjectRepository(MetaOption)
     public readonly metaOptionsRepository: Repository<MetaOption>,
   ) {}
-  public findAll(userId: string) {
+  public async findAll(userId: string) {
     const user = this.usersService.findOneById(userId);
-    return [
-      {
-        user: user,
-        title: 'Test Title',
-        content: 'Test Content',
-      },
-      {
-        user: user,
-        title: 'Test Title 2',
-        content: 'Test Content 2',
-      },
-    ];
+    return await this.postsRepository.find();
   }
   /**
    * Creating new posts
