@@ -18,7 +18,8 @@ import { MetaOptionsModule } from './meta-options/meta-options.module';
       inject: [],
       useFactory: () => ({
         type: 'postgres',
-        entities: [User],
+        // entities: [User],
+        autoLoadEntities: true, // auto loads all entities
         synchronize: true, // If this setting is set to false, we would have to manually perform migrations
         port: 5432,
         username: 'postgres',

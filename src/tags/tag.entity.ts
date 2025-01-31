@@ -3,12 +3,15 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class Tag {
-  id: number;
+  @PrimaryGeneratedColumn()
+  id: string;
+
   @Column({
     type: 'varchar',
     length: 256,
@@ -16,34 +19,42 @@ export class Tag {
     unique: true,
   })
   name: string;
+
   @Column({
     type: 'varchar',
-    length: 256,
+    length: 512,
     nullable: false,
     unique: true,
   })
   slug: string;
+
   @Column({
     type: 'text',
     nullable: true,
   })
   description: string;
+
   @Column({
     type: 'text',
     nullable: true,
   })
-  schema?: string;
+  schema: string;
+
   @Column({
     type: 'varchar',
     length: 1024,
     nullable: true,
   })
-  featuredImageUrl?: string;
+  featuredImage: string;
 
+  // https://orkhan.gitbook.io/typeorm/docs/decorator-reference
   @CreateDateColumn()
-  createAt: Date;
+  createDate: Date;
+
   @UpdateDateColumn()
   updateDate: Date;
+
+  // Add this decorartor and column enables soft delete
   @DeleteDateColumn()
-  deleteDate: Date;
+  deletedAt: Date;
 }
