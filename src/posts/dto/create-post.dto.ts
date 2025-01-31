@@ -19,7 +19,10 @@ import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
 export class CreatePostDto {
-  @ApiProperty()
+  @ApiProperty({
+    example: 'This is a title',
+    description: 'This is the title for the blog post',
+  })
   @IsString()
   @MinLength(4)
   @MaxLength(512)
@@ -28,18 +31,20 @@ export class CreatePostDto {
 
   @ApiProperty({
     enum: PostType,
-    description: "Possible values  'post', 'page', 'story', 'series'",
+    description: "Possible values, 'post', 'page', 'story', 'series'",
   })
   @IsEnum(PostType)
   @IsNotEmpty()
   postType: PostType;
 
   @ApiProperty({
-    description: "For example 'my-url'",
+    description: "For Example - 'my-url'",
+    example: 'my-blog-post',
   })
   @IsString()
   @IsNotEmpty()
   @MaxLength(256)
+  @MinLength(4)
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
       'A slug should be all small letters and uses only "-" and without spaces. For example "my-url"',
@@ -54,34 +59,46 @@ export class CreatePostDto {
   @IsNotEmpty()
   status: PostStatus;
 
+  @ApiPropertyOptional({
+    description: 'This is the content of the post',
+    example: 'The post content',
+  })
   @IsString()
-  @ApiPropertyOptional()
   @IsOptional()
   content?: string;
 
   @ApiPropertyOptional({
     description:
       'Serialize your JSON object else a validation error will be thrown',
+    example:
+      '{\r\n "@context": "https://schema.org",\r\n "@type": "Person"\r\n }',
   })
   @IsOptional()
   @IsJSON()
   schema?: string;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    description: 'Featured image for your blog post',
+    example: 'http://localhost.com/images/image1.jpg',
+  })
   @IsOptional()
-  @IsUrl()
+  @MinLength(4)
   @MaxLength(1024)
+  @IsUrl()
   featuredImageUrl?: string;
 
-  @ApiProperty({
-    description: 'Must be a valid timestamp in ISO8601',
+  @ApiPropertyOptional({
+    description: 'The date on which the blog post is published',
     example: '2024-03-16T07:46:32+0000',
   })
   @IsISO8601()
   @IsOptional()
   publishOn?: Date;
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({
+    description: 'Array of tags passed as string values',
+    example: ['nestjs', 'typescript'],
+  })
   @IsArray()
   @IsOptional()
   @IsString({ each: true })
@@ -89,27 +106,25 @@ export class CreatePostDto {
   tags?: string[];
 
   @ApiPropertyOptional({
-    type: 'array',
+    type: 'object',
     required: false,
     items: {
       type: 'object',
       properties: {
-        key: {
-          type: 'string',
-        },
-        value: {
-          type: 'string',
+        metavalue: {
+          type: 'json',
+          description: 'The metaValue is a JSON string',
+          example: '{"sidebarEnabled": true,}',
         },
       },
     },
   })
   @IsOptional()
-  @IsArray()
   @ValidateNested({ each: true })
   @Type(() => CreatePostMetaOptionsDto)
   // Type decorator
   // Matches the incoming req to the dto
   // Creates an instance of the dto
   // All the properties are validated against the dto
-  metaOptions?: CreatePostMetaOptionsDto[];
+  metaOptions?: CreatePostMetaOptionsDto | null;
 }

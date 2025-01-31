@@ -14,11 +14,14 @@ import { MetaOption } from 'src/meta-options/meta-option.entity';
 export class Post {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column({
     type: 'varchar',
     length: 512,
     nullable: false,
   })
+  title: string;
+
   @Column({
     type: 'enum',
     enum: PostType,
@@ -65,10 +68,10 @@ export class Post {
   })
   publishOn?: Date;
 
-  // Work on these in lectures about relationships
+  // Work on these in lecture on relationships
   tags?: string[];
 
   @OneToOne(() => MetaOption) // Meta options is 1-1 relationship with meta option
   @JoinColumn()
-  metaOptions?: MetaOption[];
+  metaOptions?: MetaOption;
 }
