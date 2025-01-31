@@ -7,8 +7,8 @@ export class MetaOptionsController {
   constructor(private readonly metaOptionsService: MetaOptionsService) {}
   @Post()
   public createMetaOption(
-    @Body() createMetaOptionDto: CreatePostMetaOptionsDto,
+    @Body() createPostMetaOptionDto: CreatePostMetaOptionsDto,
   ) {
-    return this.metaOptionsService.createMetaOption(createMetaOptionDto);
+    return this.metaOptionsService.create(createPostMetaOptionDto);
   }
 }

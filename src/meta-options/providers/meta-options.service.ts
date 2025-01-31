@@ -14,7 +14,7 @@ export class MetaOptionsService {
     private metaOptionRepository: Repository<MetaOption>,
   ) {}
 
-  public async createMetaOption(createMetaOptionDto: CreatePostMetaOptionsDto) {
+  public async create(createMetaOptionDto: CreatePostMetaOptionsDto) {
     const metaOption = this.metaOptionRepository.create(createMetaOptionDto);
     return await this.metaOptionRepository.save(metaOption);
   }
