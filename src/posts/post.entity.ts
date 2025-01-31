@@ -73,6 +73,7 @@ export class Post {
   // Meta options is 1-1 relationship with meta option
   @OneToOne(() => MetaOption, {
     cascade: true,
+    eager: true, // Will fetch posts AND metaOptions when getting posts
   })
 
   // We can add specific actions to the cascade (check documentation)
