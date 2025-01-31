@@ -70,8 +70,12 @@ export class Post {
 
   // Work on these in lecture on relationships
   tags?: string[];
+  // Meta options is 1-1 relationship with meta option
+  @OneToOne(() => MetaOption, {
+    cascade: true,
+  })
 
-  @OneToOne(() => MetaOption) // Meta options is 1-1 relationship with meta option
+  // We can add specific actions to the cascade (check documentation)
   @JoinColumn()
   metaOptions?: MetaOption;
 }
