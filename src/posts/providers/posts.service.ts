@@ -96,6 +96,8 @@ export class PostsService {
     // Deleting the post
     await this.postsRepository.delete(id);
     // Delete meta options
-    await this.metaOptionsRepository.delete(id);
+    await this.metaOptionsRepository.delete(post.metaOptions.id);
+
+    return { deleted: true, id };
   }
 }
