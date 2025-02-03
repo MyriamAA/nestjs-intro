@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Post } from '../post.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
+import { EntityManager } from 'typeorm';
 
 @Injectable()
 export class PostsService {
@@ -50,5 +51,51 @@ export class PostsService {
     // Return the post
 
     return await this.postsRepository.save(post);
+  }
+
+  // public async delete(id: number) {
+  //   // Start a transaction to handle both deletes atomically
+  //   const queryRunner =
+  //     this.postsRepository.manager.connection.createQueryRunner();
+  //   await queryRunner.startTransaction();
+
+  //   try {
+  //     // Find the post (with related metaOptions loaded)
+  //     const post = await this.postsRepository.findOne({
+  //       where: { id },
+  //       relations: ['metaOptions'],
+  //     });
+  //     if (!post) {
+  //       throw new Error('Post not found');
+  //     }
+
+  //     // Delete the post (cascade will handle the metaOption deletion automatically)
+  //     await queryRunner.manager.delete(Post, id); // Use delete instead of remove
+
+  //     // Commit the transaction if everything is successful
+  //     await queryRunner.commitTransaction();
+
+  //     // Return a success response
+  //     return { deleted: true, id };
+  //   } catch (error) {
+  //     // If any error occurs, rollback the transaction
+  //     await queryRunner.rollbackTransaction();
+
+  //     // Log the error and return a failure response
+  //     console.error(error);
+  //     return { deleted: false, message: error.message };
+  //   } finally {
+  //     // Release the query runner (important for clean-up)
+  //     await queryRunner.release();
+  //   }
+  // }
+
+  public async delete(id: number) {
+    // Find the post
+    const post = await this.postsRepository.findOneBy({ id });
+    // Deleting the post
+    await this.postsRepository.delete(id);
+    // Delete meta options
+    await this.metaOptionsRepository.delete(id);
   }
 }
