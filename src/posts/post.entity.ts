@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -9,6 +10,7 @@ import { PostType } from './enums/post-type.enum';
 import { PostStatus } from './enums/post-status.enum';
 import { CreatePostMetaOptionsDto } from '../meta-options/dtos/create-post-meta-options.dto';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
+import { User } from 'src/users/user.entity';
 
 @Entity()
 export class Post {
@@ -78,4 +80,8 @@ export class Post {
 
   // We can add specific actions to the cascade (check documentation)
   metaOptions?: MetaOption;
+
+  // Many posts can belong to one user
+  @ManyToOne(() => User, (user) => user.posts)
+  author: User;
 }

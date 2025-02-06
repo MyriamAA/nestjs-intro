@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Post } from 'src/posts/post.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 // Column typees differ if we're using SQL or PostgreSQL check typeorm website
 // Should match the DTO
@@ -31,4 +32,8 @@ export class User {
     nullable: false,
   })
   password: string;
+
+  // A user can have many posts
+  @OneToMany(() => Post, (post) => post.author)
+  posts: Post[];
 }
