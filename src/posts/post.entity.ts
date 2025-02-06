@@ -70,13 +70,12 @@ export class Post {
 
   // Work on these in lecture on relationships
   tags?: string[];
-  // Meta options is 1-1 relationship with meta option
-  @OneToOne(() => MetaOption, {
+  // Meta options is 1-1 relationship with meta option now BIDIRECTIONAL
+  @OneToOne(() => MetaOption, (metaOptions) => metaOptions.post, {
     cascade: true,
     eager: true, // Will fetch posts AND metaOptions when getting posts
   })
 
   // We can add specific actions to the cascade (check documentation)
-  @JoinColumn()
   metaOptions?: MetaOption;
 }
