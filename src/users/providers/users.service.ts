@@ -59,19 +59,13 @@ export class UsersService {
   /**
    * Retrieves a single user by their unique identifier.
    *
-   * @param {string} id - The unique ID of the user to retrieve.
+   * @param {number} id - The unique ID of the user to retrieve.
    * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
    */
-  public findOneById(id: string): {
-    id: number;
-    firstName: string;
-    email: string;
-  } {
-    return {
-      id: 1234,
-      firstName: 'Alice',
-      email: 'alice@doe.com',
-    };
+  public async findOneById(id: number) {
+    return await this.usersRepository.findOneBy({
+      id,
+    });
   }
   public async createUser(createUserDto: CreateUserDto) {
     // Check if email is unique

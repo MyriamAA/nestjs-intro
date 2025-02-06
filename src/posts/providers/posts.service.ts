@@ -27,7 +27,7 @@ export class PostsService {
     @InjectRepository(MetaOption)
     public readonly metaOptionsRepository: Repository<MetaOption>,
   ) {}
-  public async findAll(userId: string) {
+  public async findAll(userId: number) {
     const user = this.usersService.findOneById(userId);
 
     // Get meta options along with the posts
@@ -44,12 +44,16 @@ export class PostsService {
    * Creating new posts
    */
   public async create(@Body() createPostDto: CreatePostDto) {
+    // Find author from DB based on given authorId
+    const author = await this.usersService.findOneById(createPostDto.authorId);
     // Create post
-
-    const post = this.postsRepository.create(createPostDto); // Only use await for the save method because it returns a promise
+    // Use the spread operator to create a shallow copy of createPostDto, meaning a new object is passed to create()
+    const post = this.postsRepository.create({
+      ...createPostDto,
+      author: author,
+    }); // Only use await for the save method because it returns a promise
 
     // Return the post
-
     return await this.postsRepository.save(post);
   }
 

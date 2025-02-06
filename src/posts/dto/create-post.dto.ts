@@ -1,6 +1,7 @@
 import {
   IsArray,
   IsEnum,
+  IsInt,
   IsISO8601,
   IsJSON,
   IsNotEmpty,
@@ -127,4 +128,13 @@ export class CreatePostDto {
   // Creates an instance of the dto
   // All the properties are validated against the dto
   metaOptions?: CreatePostMetaOptionsDto | null;
+
+  @ApiProperty({
+    type: 'integer',
+    required: true,
+    example: 1,
+  })
+  @IsNotEmpty()
+  @IsInt() // Corrected here (uppercase "I")
+  authorId: number;
 }
