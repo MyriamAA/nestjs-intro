@@ -27,8 +27,13 @@ export class PostsService {
     @InjectRepository(MetaOption)
     public readonly metaOptionsRepository: Repository<MetaOption>,
   ) {}
-  public async findAll(userId: number) {
-    const user = this.usersService.findOneById(userId);
+  public async findAll(userId: string) {
+    const posts = await this.postsRepository.find({
+      relations: {
+        metaOptions: true,
+        // author: true,
+      },
+    });
 
     // Get meta options along with the posts
     // return await this.postsRepository.find({
@@ -38,7 +43,7 @@ export class PostsService {
     // });
 
     // Same output if the post entity's OneToOne eager key is set to true
-    return await this.postsRepository.find({});
+    return posts;
   }
   /**
    * Creating new posts

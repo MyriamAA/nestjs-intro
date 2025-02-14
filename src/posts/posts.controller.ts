@@ -23,7 +23,7 @@ export class PostsController {
   ) {}
 
   @Get('/:userId?')
-  public getPosts(@Param('userId') userId: number) {
+  public getPosts(@Param('userId') userId: string) {
     return this.postsService.findAll(userId);
   }
   @ApiOperation({
