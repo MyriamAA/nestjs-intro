@@ -2,6 +2,8 @@ import {
   Column,
   Entity,
   JoinColumn,
+  JoinTable,
+  ManyToMany,
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -11,6 +13,7 @@ import { PostStatus } from './enums/post-status.enum';
 import { CreatePostMetaOptionsDto } from '../meta-options/dtos/create-post-meta-options.dto';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { User } from 'src/users/user.entity';
+import { Tag } from 'src/tags/tag.entity';
 
 @Entity()
 export class Post {
@@ -71,7 +74,10 @@ export class Post {
   publishOn?: Date;
 
   // Work on these in lecture on relationships
-  tags?: string[];
+  @ManyToMany(() => Tag)
+  @JoinTable()
+  tags?: Tag[];
+
   // Meta options is 1-1 relationship with meta option now BIDIRECTIONAL
   @OneToOne(() => MetaOption, (metaOptions) => metaOptions.post, {
     cascade: true,

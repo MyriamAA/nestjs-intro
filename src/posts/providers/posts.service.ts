@@ -6,6 +6,8 @@ import { Post } from '../post.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { EntityManager } from 'typeorm';
+import { Tag } from 'src/tags/tag.entity';
+import { TagsService } from 'src/tags/providers/tags.service';
 
 @Injectable()
 export class PostsService {
@@ -20,12 +22,17 @@ export class PostsService {
      */
     @InjectRepository(Post)
     private readonly postsRepository: Repository<Post>, // Only add repositories for 1-1 relationships so that it doesnt becoeme crowded
+
     /**
      * Inject metaOptionsRepository
      */
-
     @InjectRepository(MetaOption)
-    public readonly metaOptionsRepository: Repository<MetaOption>,
+    private readonly metaOptionsRepository: Repository<MetaOption>,
+
+    /**
+     * Inject TagsService
+     */
+    private readonly tagsService: TagsService,
   ) {}
   public async findAll(userId: string) {
     const posts = await this.postsRepository.find({
@@ -51,11 +58,15 @@ export class PostsService {
   public async create(@Body() createPostDto: CreatePostDto) {
     // Find author from DB based on given authorId
     const author = await this.usersService.findOneById(createPostDto.authorId);
+
+    // Find tags
+    const tags = await this.tagsService.findMultipleTags(createPostDto.tags);
     // Create post
     // Use the spread operator to create a shallow copy of createPostDto, meaning a new object is passed to create()
     const post = this.postsRepository.create({
       ...createPostDto,
       author: author,
+      tags: tags,
     }); // Only use await for the save method because it returns a promise
 
     // Return the post
