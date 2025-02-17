@@ -18,7 +18,7 @@ import { PatchPostDto } from './dto/patch-post.dto';
 @ApiTags('Posts')
 export class PostsController {
   constructor(
-    // Injecting post service
+    /** Injecting post service */
     private readonly postsService: PostsService,
   ) {}
 
