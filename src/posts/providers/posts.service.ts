@@ -8,6 +8,7 @@ import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { EntityManager } from 'typeorm';
 import { Tag } from 'src/tags/tag.entity';
 import { TagsService } from 'src/tags/providers/tags.service';
+import { PatchPostDto } from '../dto/patch-post.dto';
 
 @Injectable()
 export class PostsService {
@@ -110,6 +111,35 @@ export class PostsService {
   //     await queryRunner.release();
   //   }
   // }
+
+  public async update(@Body() patchPostDto: PatchPostDto) {
+    // Find the tags
+    const tags = await this.tagsService.findMultipleTags(patchPostDto.tags);
+
+    // Find the post
+    const post = await this.postsRepository.findOneBy({
+      id: patchPostDto.id,
+    });
+
+    // Here using a spread operator might be problematic
+    // Because it create a copy of the object and this cause an error of duplicate id
+
+    // Update the properties
+    post.title = patchPostDto.title ?? post.title; // If title exists in patchPostDto (sent by user) then takes its value, else keep the existing title
+    post.content = patchPostDto.content ?? post.content;
+    post.status = patchPostDto.status ?? post.status;
+    post.postType = patchPostDto.postType ?? post.postType;
+    post.slug = patchPostDto.slug ?? post.slug;
+    post.featuredImageUrl =
+      patchPostDto.featuredImageUrl ?? post.featuredImageUrl;
+    post.publishOn = patchPostDto.publishOn ?? post.publishOn;
+
+    // Assign new tags
+    post.tags = tags;
+    // Save the post and return it
+
+    return await this.postsRepository.save(post);
+  }
 
   public async delete(id: number) {
     // Deleting the post
