@@ -32,4 +32,20 @@ export class TagsService {
 
     return results;
   }
+
+  public async delete(id: number) {
+    // Check if the tag exists before deleting
+    const tag = await this.tagsRepository.findOne({
+      where: { id },
+    });
+
+    if (!tag) {
+      return { deleted: false, message: 'Tag not found' };
+    }
+
+    // Proceed with deletion
+    await this.tagsRepository.delete(id);
+
+    return { deleted: true, id };
+  }
 }
