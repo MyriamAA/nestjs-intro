@@ -50,8 +50,9 @@ export class PostsController {
     return this.postsService.update(patchPostDto);
   }
 
+  // This method cascades and removes relevant relationships between posts and tags NOT the actual tags
   @Delete()
-  public deletePost(@Query('id', ParseIntPipe) id: number) {
+  public delete(@Query('id', ParseIntPipe) id: number) {
     return this.postsService.delete(id);
   }
 }
