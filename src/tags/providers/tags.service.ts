@@ -48,4 +48,11 @@ export class TagsService {
 
     return { deleted: true, id };
   }
+
+  public async softRemove(id: number) {
+    // Soft delete creates a timestamp and not remove it from DB
+    await this.tagsRepository.softDelete(id);
+
+    return { deleted: true, id };
+  }
 }
