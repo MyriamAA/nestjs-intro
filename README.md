@@ -157,3 +157,5 @@ So here I'm saying within the root of my project, just use the documentation dir
 your documentation.
 
 The details can be seen at localhost:3001
+
+Always define both sides of the relationships in many to many relationships i.e tags and posts
