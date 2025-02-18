@@ -74,7 +74,9 @@ export class Post {
   publishOn?: Date;
 
   // Work on these in lecture on relationships
-  @ManyToMany(() => Tag)
+  @ManyToMany(() => Tag, {
+    eager: true,
+  })
   @JoinTable()
   tags?: Tag[];
 
