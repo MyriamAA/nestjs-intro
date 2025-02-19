@@ -8,6 +8,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
 import { TagsModule } from './tags/tags.module';
 import { MetaOptionsModule } from './meta-options/meta-options.module';
+
+const ENV = process.env.NODE_ENV;
 import { ConfigModule } from '@nestjs/config';
 
 // Run this in cmd pg_ctl start -D "C:\users\mfabouatmeh\Desktop\CodesDar\more\Postgre\data"
@@ -18,6 +20,7 @@ import { ConfigModule } from '@nestjs/config';
     AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: !ENV ? '.env' : `.env.${ENV}`,
     }),
     TypeOrmModule.forRootAsync({
       imports: [],
