@@ -10,23 +10,30 @@ import {
 } from 'typeorm';
 import { PostType } from './enums/post-type.enum';
 import { PostStatus } from './enums/post-status.enum';
-import { CreatePostMetaOptionsDto } from '../meta-options/dtos/create-post-meta-options.dto';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { User } from 'src/users/user.entity';
 import { Tag } from 'src/tags/tag.entity';
 
+/**
+ * Represents a blog post entity.
+ */
 @Entity()
 export class Post {
+  /**
+   * Unique identifier for the post.
+   */
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({
-    type: 'varchar',
-    length: 512,
-    nullable: false,
-  })
+  /**
+   * Title of the post.
+   */
+  @Column({ type: 'varchar', length: 512, nullable: false })
   title: string;
 
+  /**
+   * Type of the post (e.g., post, page, story, series.).
+   */
   @Column({
     type: 'enum',
     enum: PostType,
@@ -35,14 +42,15 @@ export class Post {
   })
   postType: PostType;
 
-  @Column({
-    type: 'varchar',
-    length: 256,
-    nullable: false,
-    unique: true,
-  })
+  /**
+   * URL-friendly identifier for the post.
+   */
+  @Column({ type: 'varchar', length: 256, nullable: false, unique: true })
   slug: string;
 
+  /**
+   * Status of the post (draft, published, etc.).
+   */
   @Column({
     type: 'enum',
     enum: PostStatus,
@@ -50,48 +58,50 @@ export class Post {
     nullable: false,
   })
   status: PostStatus;
-  @Column({
-    type: 'text', //Large string
-    nullable: true,
-  })
+
+  /**
+   * Main content of the post (large string)
+   */
+  @Column({ type: 'text', nullable: true })
   content?: string;
-  @Column({
-    type: 'text', //Large string
-    nullable: true,
-  })
+
+  /**
+   * JSON schema for structured data.
+   */
+  @Column({ type: 'text', nullable: true })
   schema?: string;
-  @Column({
-    type: 'varchar', //Large string
-    length: 1024,
-    nullable: true,
-  })
+
+  /**
+   * URL of the featured image.
+   */
+  @Column({ type: 'varchar', length: 1024, nullable: true })
   featuredImageUrl?: string;
 
-  @Column({
-    type: 'timestamp',
-    nullable: true,
-  })
+  /**
+   * Date and time when the post is published.
+   */
+  @Column({ type: 'timestamp', nullable: true })
   publishOn?: Date;
 
-  // Work on these in lecture on relationships
-  @ManyToMany(() => Tag, (tag) => tag.posts, {
-    eager: true,
-  })
+  /**
+   * Tags associated with the post (many-to-many relationship).
+   */
+  @ManyToMany(() => Tag, (tag) => tag.posts, { eager: true })
   @JoinTable()
   tags?: Tag[];
 
-  // Meta options is 1-1 relationship with meta option now BIDIRECTIONAL
+  /**
+   * Meta options associated with the post (one-to-one relationship bidirectional).
+   */
   @OneToOne(() => MetaOption, (metaOptions) => metaOptions.post, {
     cascade: true,
     eager: true, // Will fetch posts AND metaOptions when getting posts
   })
-
-  // We can add specific actions to the cascade (check documentation)
   metaOptions?: MetaOption;
 
-  // Many posts can belong to one user
-  @ManyToOne(() => User, (user) => user.posts, {
-    eager: true,
-  })
+  /**
+   * Author of the post (many-to-one relationship with User).
+   */
+  @ManyToOne(() => User, (user) => user.posts, { eager: true })
   author: User;
 }
