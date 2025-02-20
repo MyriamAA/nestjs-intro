@@ -108,6 +108,12 @@ $ npm run doc
 
 Let me name this as doc.
 
+To see the coverage
+
+```bash
+$ http://localhost:3001/coverage.html
+```
+
 It should be a comma over here.
 
 Now this script itself a little bit verbose and lengthy, and I'll try to explain all the parts of the
