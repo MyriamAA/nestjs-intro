@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>DTO for creating metadata options for a post.</p>
+
+            </p>
 
 
 
@@ -200,10 +207,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/meta-options/dtos/create-post-meta-options.dto.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/meta-options/dtos/create-post-meta-options.dto.ts:14</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The meta value as a JSON string.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -221,7 +234,15 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { IsJSON, IsNotEmpty, IsString } from &#x27;class-validator&#x27;;
 
+/**
+ * DTO for creating metadata options for a post.
+ */
 export class CreatePostMetaOptionsDto {
+  /**
+   * The meta value as a JSON string.
+   *
+   * @example &#x27;{&quot;sidebarEnabled&quot;: true}&#x27;
+   */
   @IsNotEmpty()
   @IsJSON()
   metaValue: string;

@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>DTO for creating a new blog post.</p>
+
+            </p>
 
 
 
@@ -271,16 +278,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({type: &#x27;integer&#x27;, required: true, example: 1})<br />@IsNotEmpty()<br />@IsInt()<br />
+                            @ApiProperty({type: &#x27;integer&#x27;, required: true, description: &#x27;The ID of the author creating the post&#x27;, example: 1})<br />@IsNotEmpty()<br />@IsInt()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/posts/dto/create-post.dto.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/posts/dto/create-post.dto.ts:174</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The ID of the author creating the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -310,16 +323,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional({description: &#x27;This is the content of the post&#x27;, example: &#x27;The post content&#x27;})<br />@IsString()<br />@IsOptional()<br />
+                            @ApiPropertyOptional({description: &#x27;The main content of the post&#x27;, example: &#x27;This is the content of the blog post.&#x27;})<br />@IsString()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/posts/dto/create-post.dto.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/posts/dto/create-post.dto.ts:87</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The main content of the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -351,16 +370,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional({description: &#x27;Featured image for your blog post&#x27;, example: &#x27;http://localhost.com/images/image1.jpg&#x27;})<br />@IsOptional()<br />@MinLength(4)<br />@MaxLength(1024)<br />@IsUrl()<br />
+                            @ApiPropertyOptional({description: &#x27;The URL of the featured image for the post&#x27;, example: &#x27;http://localhost.com/images/image1.jpg&#x27;})<br />@IsOptional()<br />@MinLength(4)<br />@MaxLength(1024)<br />@IsUrl()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/posts/dto/create-post.dto.ts:89</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/posts/dto/create-post.dto.ts:112</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The URL of the featured image for the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -397,10 +422,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/posts/dto/create-post.dto.ts:129</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/posts/dto/create-post.dto.ts:161</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Additional meta options for the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -429,16 +460,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({enum: PostType, description: &#x27;Possible values, &#x27;post&#x27;, &#x27;page&#x27;, &#x27;story&#x27;, &#x27;series&#x27;&#x27;})<br />@IsEnum(PostType)<br />@IsNotEmpty()<br />
+                            @ApiProperty({enum: PostType, description: &#x27;Possible values: &#x27;post&#x27;, &#x27;page&#x27;, &#x27;story&#x27;, &#x27;series&#x27;&#x27;})<br />@IsEnum(PostType)<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/posts/dto/create-post.dto.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/posts/dto/create-post.dto.ts:48</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The type of post (e.g., &#39;post&#39;, &#39;page&#39;, &#39;story&#39;, &#39;series&#39;).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -468,16 +505,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional({description: &#x27;The date on which the blog post is published&#x27;, example: &#x27;2024-03-16T07:46:32+0000&#x27;})<br />@IsISO8601()<br />@IsOptional()<br />
+                            @ApiPropertyOptional({description: &#x27;The date on which the post is published&#x27;, example: &#x27;2024-03-16T07:46:32+0000&#x27;})<br />@IsISO8601()<br />@IsOptional()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/posts/dto/create-post.dto.ts:97</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/posts/dto/create-post.dto.ts:123</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The publication date of the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -507,7 +550,7 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional({description: &#x27;Serialize your JSON object else a validation error will be thrown&#x27;, example: &#x27;{
+                            @ApiPropertyOptional({description: &#x27;Serialized JSON object containing metadata&#x27;, example: &#x27;{
  &quot;@context&quot;: &quot;https://schema.org&quot;,
  &quot;@type&quot;: &quot;Person&quot;
  }&#x27;})<br />@IsOptional()<br />@IsJSON()<br />
@@ -516,10 +559,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/posts/dto/create-post.dto.ts:79</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/posts/dto/create-post.dto.ts:99</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>JSON metadata for the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -551,16 +600,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({description: &#x27;For Example - &#x27;my-url&#x27;&#x27;, example: &#x27;my-blog-post&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />@MaxLength(256)<br />@MinLength(4)<br />@Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {message: &#x27;A slug should be all small letters and uses only &quot;-&quot; and without spaces. For example &quot;my-url&quot;&#x27;})<br />
+                            @ApiProperty({description: &#x27;A slug for the post (e.g., &quot;my-blog-post&quot;)&#x27;, example: &#x27;my-blog-post&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />@MaxLength(256)<br />@MinLength(4)<br />@Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {message: &#x27;A slug should be all lowercase, use only &quot;-&quot;, and have no spaces. Example: &quot;my-url&quot;&#x27;})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/posts/dto/create-post.dto.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/posts/dto/create-post.dto.ts:65</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A slug for the post, used in URLs.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -589,16 +644,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({enum: PostStatus, description: &#x27;Possible values &#x27;draft&#x27;, &#x27;scheduled&#x27;, &#x27;review&#x27;, &#x27;published&#x27;&#x27;})<br />@IsEnum(PostStatus)<br />@IsNotEmpty()<br />
+                            @ApiProperty({enum: PostStatus, description: &#x27;Possible values: &#x27;draft&#x27;, &#x27;scheduled&#x27;, &#x27;review&#x27;, &#x27;published&#x27;&#x27;})<br />@IsEnum(PostStatus)<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/posts/dto/create-post.dto.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/posts/dto/create-post.dto.ts:76</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The publication status of the post (e.g., &#39;draft&#39;, &#39;scheduled&#39;, &#39;review&#39;, &#39;published&#39;).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -629,16 +690,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional({description: &#x27;Array of IDs of tags&#x27;, example: undefined})<br />@IsArray()<br />@IsOptional()<br />@IsInt({each: true})<br />
+                            @ApiPropertyOptional({description: &#x27;Array of tag IDs associated with the post&#x27;, example: undefined})<br />@IsArray()<br />@IsOptional()<br />@IsInt({each: true})<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/posts/dto/create-post.dto.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/posts/dto/create-post.dto.ts:135</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>An array of tag IDs associated with the post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -669,16 +736,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty({example: &#x27;This is a title&#x27;, description: &#x27;This is the title for the blog post&#x27;})<br />@IsString()<br />@MinLength(4)<br />@MaxLength(512)<br />@IsNotEmpty()<br />
+                            @ApiProperty({example: &#x27;This is a title&#x27;, description: &#x27;The title for the blog post&#x27;})<br />@IsString()<br />@MinLength(4)<br />@MaxLength(512)<br />@IsNotEmpty()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/posts/dto/create-post.dto.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/posts/dto/create-post.dto.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The title of the blog post.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -715,10 +788,16 @@ import { CreatePostMetaOptionsDto } from &#x27;../../meta-options/dtos/create-po
 import { ApiProperty, ApiPropertyOptional } from &#x27;@nestjs/swagger&#x27;;
 import { Type } from &#x27;class-transformer&#x27;;
 
+/**
+ * DTO for creating a new blog post.
+ */
 export class CreatePostDto {
+  /**
+   * The title of the blog post.
+   */
   @ApiProperty({
     example: &#x27;This is a title&#x27;,
-    description: &#x27;This is the title for the blog post&#x27;,
+    description: &#x27;The title for the blog post&#x27;,
   })
   @IsString()
   @MinLength(4)
@@ -726,16 +805,22 @@ export class CreatePostDto {
   @IsNotEmpty()
   title: string;
 
+  /**
+   * The type of post (e.g., &#x27;post&#x27;, &#x27;page&#x27;, &#x27;story&#x27;, &#x27;series&#x27;).
+   */
   @ApiProperty({
     enum: PostType,
-    description: &quot;Possible values, &#x27;post&#x27;, &#x27;page&#x27;, &#x27;story&#x27;, &#x27;series&#x27;&quot;,
+    description: &quot;Possible values: &#x27;post&#x27;, &#x27;page&#x27;, &#x27;story&#x27;, &#x27;series&#x27;&quot;,
   })
   @IsEnum(PostType)
   @IsNotEmpty()
   postType: PostType;
 
+  /**
+   * A slug for the post, used in URLs.
+   */
   @ApiProperty({
-    description: &quot;For Example - &#x27;my-url&#x27;&quot;,
+    description: &#x27;A slug for the post (e.g., &quot;my-blog-post&quot;)&#x27;,
     example: &#x27;my-blog-post&#x27;,
   })
   @IsString()
@@ -744,29 +829,37 @@ export class CreatePostDto {
   @MinLength(4)
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
-      &#x27;A slug should be all small letters and uses only &quot;-&quot; and without spaces. For example &quot;my-url&quot;&#x27;,
+      &#x27;A slug should be all lowercase, use only &quot;-&quot;, and have no spaces. Example: &quot;my-url&quot;&#x27;,
   })
   slug: string;
 
+  /**
+   * The publication status of the post (e.g., &#x27;draft&#x27;, &#x27;scheduled&#x27;, &#x27;review&#x27;, &#x27;published&#x27;).
+   */
   @ApiProperty({
     enum: PostStatus,
-    description: &quot;Possible values &#x27;draft&#x27;, &#x27;scheduled&#x27;, &#x27;review&#x27;, &#x27;published&#x27;&quot;,
+    description: &quot;Possible values: &#x27;draft&#x27;, &#x27;scheduled&#x27;, &#x27;review&#x27;, &#x27;published&#x27;&quot;,
   })
   @IsEnum(PostStatus)
   @IsNotEmpty()
   status: PostStatus;
 
+  /**
+   * The main content of the post.
+   */
   @ApiPropertyOptional({
-    description: &#x27;This is the content of the post&#x27;,
-    example: &#x27;The post content&#x27;,
+    description: &#x27;The main content of the post&#x27;,
+    example: &#x27;This is the content of the blog post.&#x27;,
   })
   @IsString()
   @IsOptional()
   content?: string;
 
+  /**
+   * JSON metadata for the post.
+   */
   @ApiPropertyOptional({
-    description:
-      &#x27;Serialize your JSON object else a validation error will be thrown&#x27;,
+    description: &#x27;Serialized JSON object containing metadata&#x27;,
     example:
       &#x27;{\r\n &quot;@context&quot;: &quot;https://schema.org&quot;,\r\n &quot;@type&quot;: &quot;Person&quot;\r\n }&#x27;,
   })
@@ -774,8 +867,11 @@ export class CreatePostDto {
   @IsJSON()
   schema?: string;
 
+  /**
+   * The URL of the featured image for the post.
+   */
   @ApiPropertyOptional({
-    description: &#x27;Featured image for your blog post&#x27;,
+    description: &#x27;The URL of the featured image for the post&#x27;,
     example: &#x27;http://localhost.com/images/image1.jpg&#x27;,
   })
   @IsOptional()
@@ -784,16 +880,22 @@ export class CreatePostDto {
   @IsUrl()
   featuredImageUrl?: string;
 
+  /**
+   * The publication date of the post.
+   */
   @ApiPropertyOptional({
-    description: &#x27;The date on which the blog post is published&#x27;,
+    description: &#x27;The date on which the post is published&#x27;,
     example: &#x27;2024-03-16T07:46:32+0000&#x27;,
   })
   @IsISO8601()
   @IsOptional()
   publishOn?: Date;
 
+  /**
+   * An array of tag IDs associated with the post.
+   */
   @ApiPropertyOptional({
-    description: &#x27;Array of IDs of tags&#x27;,
+    description: &#x27;Array of tag IDs associated with the post&#x27;,
     example: [1, 2],
   })
   @IsArray()
@@ -801,6 +903,9 @@ export class CreatePostDto {
   @IsInt({ each: true })
   tags?: number[];
 
+  /**
+   * Additional meta options for the post.
+   */
   @ApiPropertyOptional({
     type: &#x27;object&#x27;,
     required: false,
@@ -809,8 +914,8 @@ export class CreatePostDto {
       properties: {
         metavalue: {
           type: &#x27;json&#x27;,
-          description: &#x27;The metaValue is a JSON string&#x27;,
-          example: &#x27;{&quot;sidebarEnabled&quot;: true,}&#x27;,
+          description: &#x27;A JSON string containing metadata options&#x27;,
+          example: &#x27;{&quot;sidebarEnabled&quot;: true}&#x27;,
         },
       },
     },
@@ -824,13 +929,17 @@ export class CreatePostDto {
   // All the properties are validated against the dto
   metaOptions?: CreatePostMetaOptionsDto | null;
 
+  /**
+   * The ID of the author creating the post.
+   */
   @ApiProperty({
     type: &#x27;integer&#x27;,
     required: true,
+    description: &#x27;The ID of the author creating the post&#x27;,
     example: 1,
   })
   @IsNotEmpty()
-  @IsInt() // Corrected here (uppercase &quot;I&quot;)
+  @IsInt()
   authorId: number;
 }
 </code></pre>
