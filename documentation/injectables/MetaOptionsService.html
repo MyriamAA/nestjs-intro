@@ -295,7 +295,7 @@ Provides methods to create and save meta options.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="../entitys/MetaOption.html" target="_self" >Promise&lt;MetaOption&gt;</a></code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
@@ -338,9 +338,7 @@ export class MetaOptionsService {
    * @param createMetaOptionDto Data transfer object containing meta option details.
    * @returns A promise that resolves to the saved MetaOption entity.
    */
-  public async create(
-    createMetaOptionDto: CreatePostMetaOptionsDto,
-  ): Promise&lt;MetaOption&gt; {
+  public async create(createMetaOptionDto: CreatePostMetaOptionsDto) {
     const metaOption &#x3D; this.metaOptionRepository.create(createMetaOptionDto);
     return await this.metaOptionRepository.save(metaOption);
   }
