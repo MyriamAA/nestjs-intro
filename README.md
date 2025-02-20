@@ -169,3 +169,21 @@ your documentation.
 The details can be seen at localhost:3001
 
 Always define both sides of the relationships in many to many relationships i.e tags and posts
+
+## Generate a service
+
+```bash
+$ npx nest generate service tags/providers/tags --flat --no-spec
+```
+
+## Generate a module
+
+```bash
+$ nest generate module auth
+```
+
+## Generate a controller
+
+```bash
+$ nest generate controller auth --no-spec
+```
