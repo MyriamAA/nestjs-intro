@@ -130,6 +130,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Data Transfer Object (DTO) for creating a new tag.</p>
+
+            </p>
 
 
 
@@ -225,16 +232,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional()<br />@IsOptional()<br />@IsString()<br />
+                            @ApiPropertyOptional({description: &#x27;A brief description of the tag&#x27;, example: &#x27;Posts related to technology and innovations&#x27;})<br />@IsOptional()<br />@IsString()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:61</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>A brief description of the tag.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -264,16 +277,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional()<br />@IsOptional()<br />@IsUrl()<br />@MaxLength(1024)<br />
+                            @ApiPropertyOptional({description: &#x27;URL of the featured image for the tag&#x27;, example: &#x27;https://example.com/images/tag-image.jpg&#x27;})<br />@IsOptional()<br />@IsUrl()<br />@MaxLength(1024)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:88</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL of the featured image for the tag.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -304,16 +323,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />@IsString()<br />@MinLength(3)<br />@IsNotEmpty()<br />@MaxLength(256)<br />
+                            @ApiProperty({description: &#x27;The name of the tag&#x27;, example: &#x27;Technology&#x27;})<br />@IsString()<br />@MinLength(3)<br />@IsNotEmpty()<br />@MaxLength(256)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The name of the tag.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -342,16 +367,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiPropertyOptional()<br />@IsOptional()<br />@IsJSON()<br />
+                            @ApiPropertyOptional({description: &#x27;JSON metadata associated with the tag&#x27;, example: &#x27;{&quot;color&quot;: &quot;blue&quot;}&#x27;})<br />@IsOptional()<br />@IsJSON()<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:74</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>JSON metadata associated with the tag.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -382,16 +413,22 @@
                         <b>Decorators : </b>
                         <br />
                         <code>
-                            @ApiProperty()<br />@IsString()<br />@IsNotEmpty()<br />@Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {message: &#x27;A slug should be all small letters and uses only &quot;-&quot; and without spaces. For example &quot;my-url&quot;&#x27;})<br />@MaxLength(512)<br />
+                            @ApiProperty({description: &#x27;A unique slug for the tag, used in URLs&#x27;, example: &#x27;technology&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />@Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {message: &#x27;A slug should be all lowercase letters and use only &quot;-&quot; as a separator. For example &quot;my-url&quot;&#x27;})<br />@MaxLength(512)<br />
                         </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/tags/dtos/create-tag.dto.ts:48</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The slug for the tag, used in URLs.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -419,35 +456,78 @@ import {
   MinLength,
 } from &#x27;class-validator&#x27;;
 
+/**
+ * Data Transfer Object (DTO) for creating a new tag.
+ */
 export class CreateTagDto {
-  @ApiProperty()
+  /**
+   * The name of the tag.
+   *
+   * @example &quot;Technology&quot;
+   */
+  @ApiProperty({
+    description: &#x27;The name of the tag&#x27;,
+    example: &#x27;Technology&#x27;,
+  })
   @IsString()
   @MinLength(3)
   @IsNotEmpty()
   @MaxLength(256)
   name: string;
 
-  @ApiProperty()
+  /**
+   * The slug for the tag, used in URLs.
+   *
+   * @example &quot;technology&quot;
+   */
+  @ApiProperty({
+    description: &#x27;A unique slug for the tag, used in URLs&#x27;,
+    example: &#x27;technology&#x27;,
+  })
   @IsString()
   @IsNotEmpty()
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
-      &#x27;A slug should be all small letters and uses only &quot;-&quot; and without spaces. For example &quot;my-url&quot;&#x27;,
+      &#x27;A slug should be all lowercase letters and use only &quot;-&quot; as a separator. For example &quot;my-url&quot;&#x27;,
   })
   @MaxLength(512)
   slug: string;
 
-  @ApiPropertyOptional()
+  /**
+   * A brief description of the tag.
+   *
+   * @example &quot;Posts related to technology and innovations&quot;
+   */
+  @ApiPropertyOptional({
+    description: &#x27;A brief description of the tag&#x27;,
+    example: &#x27;Posts related to technology and innovations&#x27;,
+  })
   @IsOptional()
   @IsString()
   description: string;
 
-  @ApiPropertyOptional()
+  /**
+   * JSON metadata associated with the tag.
+   *
+   * @example &#x27;{&quot;color&quot;: &quot;blue&quot;}&#x27;
+   */
+  @ApiPropertyOptional({
+    description: &#x27;JSON metadata associated with the tag&#x27;,
+    example: &#x27;{&quot;color&quot;: &quot;blue&quot;}&#x27;,
+  })
   @IsOptional()
   @IsJSON()
   schema: string;
 
-  @ApiPropertyOptional()
+  /**
+   * URL of the featured image for the tag.
+   *
+   * @example &quot;https://example.com/images/tag-image.jpg&quot;
+   */
+  @ApiPropertyOptional({
+    description: &#x27;URL of the featured image for the tag&#x27;,
+    example: &#x27;https://example.com/images/tag-image.jpg&#x27;,
+  })
   @IsOptional()
   @IsUrl()
   @MaxLength(1024)

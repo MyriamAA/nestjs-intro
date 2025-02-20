@@ -130,6 +130,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for handling tag-related API requests.</p>
+
+            </p>
 
 
 
@@ -211,14 +218,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="22"
-                                    class="link-to-prism">src/tags/tags.controller.ts:22</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/tags/tags.controller.ts:29</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new tag.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -229,6 +238,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -243,6 +253,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>DTO containing tag data.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -252,7 +266,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The created tag.</p>
+
                             </div>
                 </td>
             </tr>
@@ -289,14 +304,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/tags/tags.controller.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="39"
+                                    class="link-to-prism">src/tags/tags.controller.ts:39</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a tag by its ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -307,6 +324,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -321,6 +339,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID of the tag to delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -330,7 +352,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An object indicating whether the deletion was successful.</p>
+
                             </div>
                 </td>
             </tr>
@@ -367,14 +390,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/tags/tags.controller.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/tags/tags.controller.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Soft deletes a tag by its ID, marking it as deleted without removing it from the database.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -385,6 +410,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -399,6 +425,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID of the tag to soft delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -408,7 +438,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An object indicating whether the soft deletion was successful.</p>
+
                             </div>
                 </td>
             </tr>
@@ -429,28 +460,45 @@
 import { TagsService } from &#x27;./providers/tags.service&#x27;;
 import { CreateTagDto } from &#x27;./dtos/create-tag.dto&#x27;;
 
+/**
+ * Controller for handling tag-related API requests.
+ */
 @Controller(&#x27;tags&#x27;)
 export class TagsController {
-  constructor(
-    /**
-     * Inject tag service
-     */
-    private readonly tagsService: TagsService,
-  ) {}
+  /**
+   * Injects the TagsService.
+   * @param tagsService The service responsible for tag operations.
+   */
+  constructor(private readonly tagsService: TagsService) {}
 
+  /**
+   * Creates a new tag.
+   * @param createTagDto DTO containing tag data.
+   * @returns The created tag.
+   */
   @Post()
   public create(@Body() createTagDto: CreateTagDto) {
     return this.tagsService.create(createTagDto);
   }
 
+  /**
+   * Deletes a tag by its ID.
+   * @param id The ID of the tag to delete.
+   * @returns An object indicating whether the deletion was successful.
+   */
   @Delete()
   public async delete(@Query(&#x27;id&#x27;, ParseIntPipe) id: number) {
     return this.tagsService.delete(id);
   }
 
-  // /tags/soft-delete
+  /**
+   * Soft deletes a tag by its ID, marking it as deleted without removing it from the database.
+   * @param id The ID of the tag to soft delete.
+   * @returns An object indicating whether the soft deletion was successful.
+   */
   @Delete(&#x27;soft-delete&#x27;)
   public async softDelete(@Query(&#x27;id&#x27;, ParseIntPipe) id: number) {
+    // Route is /tags/soft-delete
     return this.tagsService.softRemove(id);
   }
 }

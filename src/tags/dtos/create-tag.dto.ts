@@ -10,35 +10,78 @@ import {
   MinLength,
 } from 'class-validator';
 
+/**
+ * Data Transfer Object (DTO) for creating a new tag.
+ */
 export class CreateTagDto {
-  @ApiProperty()
+  /**
+   * The name of the tag.
+   *
+   * @example "Technology"
+   */
+  @ApiProperty({
+    description: 'The name of the tag',
+    example: 'Technology',
+  })
   @IsString()
   @MinLength(3)
   @IsNotEmpty()
   @MaxLength(256)
   name: string;
 
-  @ApiProperty()
+  /**
+   * The slug for the tag, used in URLs.
+   *
+   * @example "technology"
+   */
+  @ApiProperty({
+    description: 'A unique slug for the tag, used in URLs',
+    example: 'technology',
+  })
   @IsString()
   @IsNotEmpty()
   @Matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
     message:
-      'A slug should be all small letters and uses only "-" and without spaces. For example "my-url"',
+      'A slug should be all lowercase letters and use only "-" as a separator. For example "my-url"',
   })
   @MaxLength(512)
   slug: string;
 
-  @ApiPropertyOptional()
+  /**
+   * A brief description of the tag.
+   *
+   * @example "Posts related to technology and innovations"
+   */
+  @ApiPropertyOptional({
+    description: 'A brief description of the tag',
+    example: 'Posts related to technology and innovations',
+  })
   @IsOptional()
   @IsString()
   description: string;
 
-  @ApiPropertyOptional()
+  /**
+   * JSON metadata associated with the tag.
+   *
+   * @example '{"color": "blue"}'
+   */
+  @ApiPropertyOptional({
+    description: 'JSON metadata associated with the tag',
+    example: '{"color": "blue"}',
+  })
   @IsOptional()
   @IsJSON()
   schema: string;
 
-  @ApiPropertyOptional()
+  /**
+   * URL of the featured image for the tag.
+   *
+   * @example "https://example.com/images/tag-image.jpg"
+   */
+  @ApiPropertyOptional({
+    description: 'URL of the featured image for the tag',
+    example: 'https://example.com/images/tag-image.jpg',
+  })
   @IsOptional()
   @IsUrl()
   @MaxLength(1024)

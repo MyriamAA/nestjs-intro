@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for handling tag-related operations.</p>
+
+            </p>
 
 
 
@@ -185,12 +192,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/tags/providers/tags.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/tags/providers/tags.service.ts:13</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Injects the repository for interacting with the <code>Tag</code> entity.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -199,6 +208,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -213,6 +223,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>The TypeORM repository for the <code>Tag</code> entity.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -251,15 +265,15 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/tags/providers/tags.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/tags/providers/tags.service.ts:28</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Creating new tags</p>
+                        <div class="io-description"><p>Creates a new tag.</p>
 </div>
 
                             <div class="io-description">
@@ -271,6 +285,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -285,6 +300,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Data Transfer Object (DTO) containing tag details.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -294,7 +313,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The created tag.</p>
+
                             </div>
                 </td>
             </tr>
@@ -323,14 +343,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/tags/providers/tags.service.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/tags/providers/tags.service.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a tag by its ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -341,6 +363,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -355,6 +378,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID of the tag to delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -364,7 +391,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An object indicating whether the deletion was successful.</p>
+
                             </div>
                 </td>
             </tr>
@@ -393,14 +421,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/tags/providers/tags.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/tags/providers/tags.service.ts:38</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Finds multiple tags based on an array of tag IDs.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -411,6 +441,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -425,6 +456,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>An array of tag IDs.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -434,7 +469,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A list of found tags.</p>
+
                             </div>
                 </td>
             </tr>
@@ -463,14 +499,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/tags/providers/tags.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/tags/providers/tags.service.ts:74</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Soft deletes a tag by its ID, marking it as deleted without removing it from the database.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -481,6 +519,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -495,6 +534,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID of the tag to soft delete.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -504,7 +547,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>An object indicating whether the soft deletion was successful.</p>
+
                             </div>
                 </td>
             </tr>
@@ -523,34 +567,51 @@ import { Tag } from &#x27;../tag.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 
 //npx nest generate service tags/providers/tags --flat --no-spec
+
+/**
+ * Service for handling tag-related operations.
+ */
 @Injectable()
 export class TagsService {
+  /**
+   * Injects the repository for interacting with the &#x60;Tag&#x60; entity.
+   * @param tagsRepository The TypeORM repository for the &#x60;Tag&#x60; entity.
+   */
   constructor(
-    /**
-     * Inject tagsRepository
-     */
     @InjectRepository(Tag)
     private readonly tagsRepository: Repository&lt;Tag&gt;,
   ) {}
+
   /**
-   * Creating new tags
+   * Creates a new tag.
+   * @param createTagDto Data Transfer Object (DTO) containing tag details.
+   * @returns The created tag.
    */
   public async create(createTagDto: CreateTagDto) {
     const tag &#x3D; this.tagsRepository.create(createTagDto);
-
     return await this.tagsRepository.save(tag);
   }
 
+  /**
+   * Finds multiple tags based on an array of tag IDs.
+   * @param tags An array of tag IDs.
+   * @returns A list of found tags.
+   */
   public async findMultipleTags(tags: number[]) {
     const results &#x3D; await this.tagsRepository.find({
       where: {
-        id: In(tags), // Finds all the tags with ids within this array
+        id: In(tags), // Finds all the tags with IDs within this array.
       },
     });
 
     return results;
   }
 
+  /**
+   * Deletes a tag by its ID.
+   * @param id The ID of the tag to delete.
+   * @returns An object indicating whether the deletion was successful.
+   */
   public async delete(id: number) {
     // Check if the tag exists before deleting
     const tag &#x3D; await this.tagsRepository.findOne({
@@ -567,10 +628,13 @@ export class TagsService {
     return { deleted: true, id };
   }
 
+  /**
+   * Soft deletes a tag by its ID, marking it as deleted without removing it from the database.
+   * @param id The ID of the tag to soft delete.
+   * @returns An object indicating whether the soft deletion was successful.
+   */
   public async softRemove(id: number) {
-    // Soft delete creates a timestamp and not remove it from DB
     await this.tagsRepository.softDelete(id);
-
     return { deleted: true, id };
   }
 }
