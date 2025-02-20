@@ -126,6 +126,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service responsible for handling post-related operations.</p>
+
+            </p>
 
 
 
@@ -144,7 +151,23 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#create" >create</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#findAll" >findAll</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
+                                <a href="#update" >update</a>
                             </li>
                         </ul>
                     </td>
@@ -164,17 +187,19 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>)</code>
+<code>constructor(usersService: <a href="../injectables/UsersService.html" target="_self">UsersService</a>, postsRepository: <a href="../entitys/Post.html" target="_self">Repository&lt;Post&gt;</a>, metaOptionsRepository: <a href="../entitys/MetaOption.html" target="_self">Repository&lt;MetaOption&gt;</a>, tagsService: <a href="../injectables/TagsService.html" target="_self">TagsService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/posts/providers/posts.service.ts:5</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/posts/providers/posts.service.ts:15</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Constructor to inject dependencies.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -183,6 +208,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -197,6 +223,58 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Service to handle user-related operations.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>postsRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/Post.html" target="_self" >Repository&lt;Post&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Repository for managing Post entities.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>metaOptionsRepository</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../entitys/MetaOption.html" target="_self" >Repository&lt;MetaOption&gt;</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Repository for managing MetaOption entities.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tagsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TagsService.html" target="_self" >TagsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Service for handling tag-related operations.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -216,9 +294,166 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="create"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>create</b></span>
+                        <a href="#create"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>create(createPostDto: <a href="../classes/CreatePostDto.html" target="_self">CreatePostDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/posts/providers/posts.service.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new post.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>createPostDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreatePostDto.html" target="_self" >CreatePostDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>DTO containing post creation details.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The newly created post.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>delete(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/posts/providers/posts.service.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Deletes a post from the database.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>The ID of the post to delete.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>An object indicating the deletion status.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="findAll"></a>
                     <span class="name">
                             <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
                         <span ><b>findAll</b></span>
                         <a href="#findAll"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -234,14 +469,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="10"
-                                    class="link-to-prism">src/posts/providers/posts.service.ts:10</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/posts/providers/posts.service.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves all posts along with their meta options.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -252,6 +489,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -266,16 +504,99 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>The ID of the user requesting the posts.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{}</code>
+                            <b>Returns : </b>    <code>unknown</code>
 
                         </div>
                             <div class="io-description">
+                                <p>A list of posts with related meta options.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="update"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>update</b></span>
+                        <a href="#update"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>update(patchPostDto: <a href="../classes/PatchPostDto.html" target="_self">PatchPostDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/posts/providers/posts.service.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Updates an existing post.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>patchPostDto</td>
+                                            <td>
+                                                            <code><a href="../classes/PatchPostDto.html" target="_self" >PatchPostDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>DTO containing fields to update.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The updated post.</p>
+
                             </div>
                 </td>
             </tr>
@@ -287,29 +608,150 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Injectable } from &#x27;@nestjs/common&#x27;;
 import { UsersService } from &#x27;src/users/providers/users.service&#x27;;
+import { CreatePostDto } from &#x27;../dto/create-post.dto&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
+import { Post } from &#x27;../post.entity&#x27;;
+import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
+import { MetaOption } from &#x27;src/meta-options/meta-option.entity&#x27;;
+import { TagsService } from &#x27;src/tags/providers/tags.service&#x27;;
+import { PatchPostDto } from &#x27;../dto/patch-post.dto&#x27;;
 
+/**
+ * Service responsible for handling post-related operations.
+ */
 @Injectable()
 export class PostsService {
+  /**
+   * Constructor to inject dependencies.
+   * @param usersService Service to handle user-related operations.
+   * @param postsRepository Repository for managing Post entities.
+   * @param metaOptionsRepository Repository for managing MetaOption entities.
+   * @param tagsService Service for handling tag-related operations.
+   */
   constructor(
-    // Injecting User Service
     private readonly usersService: UsersService,
+
+    @InjectRepository(Post)
+    private readonly postsRepository: Repository&lt;Post&gt;, // Only add repositories for 1-1 relationships so that it doesnt become crowded
+
+    @InjectRepository(MetaOption)
+    private readonly metaOptionsRepository: Repository&lt;MetaOption&gt;,
+
+    private readonly tagsService: TagsService,
   ) {}
-  public findAll(userId: string) {
-    const user &#x3D; this.usersService.findOneById(userId);
-    return [
-      {
-        user: user,
-        title: &#x27;Test Title&#x27;,
-        content: &#x27;Test Content&#x27;,
-      },
-      {
-        user: user,
-        title: &#x27;Test Title 2&#x27;,
-        content: &#x27;Test Content 2&#x27;,
-      },
-    ];
+
+  /**
+   * Retrieves all posts along with their meta options.
+   * @param userId The ID of the user requesting the posts.
+   * @returns A list of posts with related meta options.
+   */
+  public async findAll(userId: string) {
+    return await this.postsRepository.find({
+      relations: { metaOptions: true },
+    });
+
+    // Get meta options along with the posts
+    // return await this.postsRepository.find({
+    //   relations: {
+    //     metaOptions: true,
+    //   },
+    // });
+  }
+
+  /**
+   * Creates a new post.
+   * @param createPostDto DTO containing post creation details.
+   * @returns The newly created post.
+   */
+  public async create(@Body() createPostDto: CreatePostDto) {
+    const author &#x3D; await this.usersService.findOneById(createPostDto.authorId);
+    const tags &#x3D; await this.tagsService.findMultipleTags(createPostDto.tags);
+
+    // Use the spread operator to create a shallow copy of createPostDto, meaning a new object is passed to create()
+    const post &#x3D; this.postsRepository.create({
+      ...createPostDto,
+      author,
+      tags,
+    }); // Only use await for the save method because it returns a promise
+
+    return await this.postsRepository.save(post);
+  }
+
+  /*
+   public async delete(id: number) {
+    // Start a transaction to handle both deletes atomically
+    const queryRunner &#x3D;
+      this.postsRepository.manager.connection.createQueryRunner();
+    await queryRunner.startTransaction();
+
+    try {
+      // Find the post (with related metaOptions loaded)
+      const post &#x3D; await this.postsRepository.findOne({
+        where: { id },
+        relations: [&#x27;metaOptions&#x27;],
+      });
+      if (!post) {
+        throw new Error(&#x27;Post not found&#x27;);
+      }
+
+      // Delete the post (cascade will handle the metaOption deletion automatically)
+      await queryRunner.manager.delete(Post, id); // Use delete instead of remove
+
+      // Commit the transaction if everything is successful
+      await queryRunner.commitTransaction();
+
+      // Return a success response
+      return { deleted: true, id };
+    } catch (error) {
+      // If any error occurs, rollback the transaction
+      await queryRunner.rollbackTransaction();
+
+      // Log the error and return a failure response
+      console.error(error);
+      return { deleted: false, message: error.message };
+    } finally {
+      // Release the query runner (important for clean-up)
+      await queryRunner.release();
+    }
+  }
+*/
+
+  /**
+   * Updates an existing post.
+   * @param patchPostDto DTO containing fields to update.
+   * @returns The updated post.
+   */
+  public async update(@Body() patchPostDto: PatchPostDto) {
+    const tags &#x3D; await this.tagsService.findMultipleTags(patchPostDto.tags);
+    const post &#x3D; await this.postsRepository.findOneBy({ id: patchPostDto.id });
+
+    if (!post) {
+      throw new Error(&#x27;Post not found&#x27;);
+    }
+
+    post.title &#x3D; patchPostDto.title ?? post.title;
+    post.content &#x3D; patchPostDto.content ?? post.content;
+    post.status &#x3D; patchPostDto.status ?? post.status;
+    post.postType &#x3D; patchPostDto.postType ?? post.postType;
+    post.slug &#x3D; patchPostDto.slug ?? post.slug;
+    post.featuredImageUrl &#x3D;
+      patchPostDto.featuredImageUrl ?? post.featuredImageUrl;
+    post.publishOn &#x3D; patchPostDto.publishOn ?? post.publishOn;
+    post.tags &#x3D; tags;
+
+    return await this.postsRepository.save(post);
+  }
+
+  /**
+   * Deletes a post from the database.
+   * @param id The ID of the post to delete.
+   * @returns An object indicating the deletion status.
+   */
+  public async delete(id: number) {
+    await this.postsRepository.delete(id);
+    return { deleted: true, id };
   }
 }
 </code></pre>

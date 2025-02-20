@@ -199,7 +199,7 @@
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createUsers(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>, headers: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    <code>createUsers(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
                 </td>
             </tr>
 
@@ -246,23 +246,11 @@
 
 
                                         </tr>
-                                        <tr>
-                                                <td>headers</td>
-                                            <td>
-                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                            </td>
-
-                                            <td>
-                                                    No
-                                            </td>
-
-
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
                             <div class="io-description">
@@ -407,8 +395,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/users/users.controller.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/users/users.controller.ts:72</a></div>
                         </td>
                     </tr>
 
@@ -525,13 +513,8 @@ export class UsersController {
 
     // With
     @Body() createUserDto: CreateUserDto,
-    @Headers() headers: any,
   ) {
-    console.log(createUserDto);
-    console.log(headers);
-    const { firstName } &#x3D; createUserDto;
-    console.log(firstName);
-    return &#x27;You sent a post req to users endpoint&#x27;;
+    return this.usersService.createUser(createUserDto);
   }
   @Patch()
   public patchUser(@Body() patchUserDto: PatchUserDto) {

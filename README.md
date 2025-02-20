@@ -102,6 +102,10 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ### Script
 
+```bash
+$ npm run doc
+```
+
 Let me name this as doc.
 
 It should be a comma over here.
