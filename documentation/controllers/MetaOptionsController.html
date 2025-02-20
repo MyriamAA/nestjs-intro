@@ -130,6 +130,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for managing post metadata options.</p>
+
+            </p>
 
 
 
@@ -199,14 +206,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="9"
-                                    class="link-to-prism">src/meta-options/meta-options.controller.ts:9</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/meta-options/meta-options.controller.ts:22</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new meta option for a post.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -217,6 +226,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -231,6 +241,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>DTO containing metadata information.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -240,7 +254,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The created meta option.</p>
+
                             </div>
                 </td>
             </tr>
@@ -254,9 +269,22 @@
 import { CreatePostMetaOptionsDto } from &#x27;./dtos/create-post-meta-options.dto&#x27;;
 import { MetaOptionsService } from &#x27;./providers/meta-options.service&#x27;;
 
+/**
+ * Controller for managing post metadata options.
+ */
 @Controller(&#x27;meta-options&#x27;)
 export class MetaOptionsController {
+  /**
+   * Injects the MetaOptionsService.
+   * @param metaOptionsService The service responsible for metadata operations.
+   */
   constructor(private readonly metaOptionsService: MetaOptionsService) {}
+
+  /**
+   * Creates a new meta option for a post.
+   * @param createPostMetaOptionDto DTO containing metadata information.
+   * @returns The created meta option.
+   */
   @Post()
   public createMetaOption(
     @Body() createPostMetaOptionDto: CreatePostMetaOptionsDto,

@@ -187,6 +187,13 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>Module for managing metadata options related to posts.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -224,9 +231,23 @@ import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { MetaOption } from &#x27;./meta-option.entity&#x27;;
 import { MetaOptionsService } from &#x27;./providers/meta-options.service&#x27;;
 
+/**
+ * Module for managing metadata options related to posts.
+ */
 @Module({
+  /**
+   * Registers controllers for handling metadata-related routes.
+   */
   controllers: [MetaOptionsController],
+
+  /**
+   * Imports TypeORM module and registers the MetaOption entity.
+   */
   imports: [TypeOrmModule.forFeature([MetaOption])],
+
+  /**
+   * Provides the MetaOptionsService for handling business logic.
+   */
   providers: [MetaOptionsService],
 })
 export class MetaOptionsModule {}

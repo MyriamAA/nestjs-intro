@@ -124,6 +124,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Represents the MetaOption entity, storing metadata for posts.</p>
+
+            </p>
 
 
             <section data-compodoc="block-index">
@@ -206,10 +213,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/meta-options/meta-option.entity.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/meta-options/meta-option.entity.ts:37</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Timestamp indicating when the record was created.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -242,10 +255,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/meta-options/meta-option.entity.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/meta-options/meta-option.entity.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Unique identifier for the MetaOption.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -278,10 +297,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/meta-options/meta-option.entity.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/meta-options/meta-option.entity.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Metadata value stored in JSON format.
+Note: JSON storage is not available in MySQL.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -315,10 +341,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/meta-options/meta-option.entity.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/meta-options/meta-option.entity.ts:53</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Associated post entity (One-to-One relationship).
+If the post is deleted, the metaOption is also deleted (<code>CASCADE</code>).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -351,10 +384,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/meta-options/meta-option.entity.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/meta-options/meta-option.entity.ts:43</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Timestamp indicating when the record was last updated.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -374,21 +413,43 @@ import {
   UpdateDateColumn,
 } from &#x27;typeorm&#x27;;
 
+/**
+ * Represents the MetaOption entity, storing metadata for posts.
+ */
 @Entity()
 export class MetaOption {
+  /**
+   * Unique identifier for the MetaOption.
+   */
   @PrimaryGeneratedColumn()
   id: number;
-  // Without needing to serialize the JSON object(unavailable in mysql)
+
+  /**
+   * Metadata value stored in JSON format.
+   * Note: JSON storage is not available in MySQL.
+   */
   @Column({
     type: &#x27;json&#x27;,
     nullable: false,
   })
   metaValue: string;
+
+  /**
+   * Timestamp indicating when the record was created.
+   */
   @CreateDateColumn()
   createDate: Date;
+
+  /**
+   * Timestamp indicating when the record was last updated.
+   */
   @UpdateDateColumn()
   updateDate: Date;
 
+  /**
+   * Associated post entity (One-to-One relationship).
+   * If the post is deleted, the metaOption is also deleted (&#x60;CASCADE&#x60;).
+   */
   @OneToOne(() &#x3D;&gt; Post, (post) &#x3D;&gt; post.metaOptions, {
     onDelete: &#x27;CASCADE&#x27;,
   })

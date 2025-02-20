@@ -126,6 +126,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Service for managing MetaOptions.
+Provides methods to create and save meta options.</p>
+
+            </p>
 
 
 
@@ -170,12 +178,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/meta-options/providers/meta-options.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/meta-options/providers/meta-options.service.ts:12</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Inject the repository for MetaOption entity.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -184,6 +194,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -198,6 +209,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Repository for interacting with MetaOption entity.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -236,14 +251,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="17"
-                                    class="link-to-prism">src/meta-options/providers/meta-options.service.ts:17</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/meta-options/providers/meta-options.service.ts:27</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Create a new MetaOption based on the provided data transfer object (DTO).</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -254,6 +271,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -268,16 +286,21 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Data transfer object containing meta option details.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>unknown</code>
+                            <b>Returns : </b>        <code><a href="../entitys/MetaOption.html" target="_self" >Promise&lt;MetaOption&gt;</a></code>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A promise that resolves to the saved MetaOption entity.</p>
+
                             </div>
                 </td>
             </tr>
@@ -295,17 +318,29 @@ import { MetaOption } from &#x27;../meta-option.entity&#x27;;
 import { Repository } from &#x27;typeorm&#x27;;
 import { CreatePostMetaOptionsDto } from &#x27;../dtos/create-post-meta-options.dto&#x27;;
 
+/**
+ * Service for managing MetaOptions.
+ * Provides methods to create and save meta options.
+ */
 @Injectable()
 export class MetaOptionsService {
+  /**
+   * Inject the repository for MetaOption entity.
+   * @param metaOptionRepository Repository for interacting with MetaOption entity.
+   */
   constructor(
-    /**
-     * Inject metaOptionsRepository
-     */
     @InjectRepository(MetaOption)
     private metaOptionRepository: Repository&lt;MetaOption&gt;,
   ) {}
 
-  public async create(createMetaOptionDto: CreatePostMetaOptionsDto) {
+  /**
+   * Create a new MetaOption based on the provided data transfer object (DTO).
+   * @param createMetaOptionDto Data transfer object containing meta option details.
+   * @returns A promise that resolves to the saved MetaOption entity.
+   */
+  public async create(
+    createMetaOptionDto: CreatePostMetaOptionsDto,
+  ): Promise&lt;MetaOption&gt; {
     const metaOption &#x3D; this.metaOptionRepository.create(createMetaOptionDto);
     return await this.metaOptionRepository.save(metaOption);
   }

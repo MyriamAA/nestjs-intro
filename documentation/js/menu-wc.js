@@ -121,13 +121,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/MetaOptionsModule.html" data-type="entity-link" >MetaOptionsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#controllers-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' : 'data-bs-target="#xs-controllers-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' }>
+                                            'data-bs-target="#controllers-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' : 'data-bs-target="#xs-controllers-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' :
-                                            'id="xs-controllers-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' :
+                                            'id="xs-controllers-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' }>
                                             <li class="link">
                                                 <a href="controllers/MetaOptionsController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MetaOptionsController</a>
                                             </li>
@@ -135,13 +135,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#injectables-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' : 'data-bs-target="#xs-injectables-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' }>
+                                        'data-bs-target="#injectables-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' : 'data-bs-target="#xs-injectables-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' :
-                                        'id="xs-injectables-links-module-MetaOptionsModule-c8635854cc9c26a1451f421d4d1562a6914e541655943e0cbfdd482a2d8b34283afe525fe9aed47795d32573aabbc04467a01f8dabd1c1df776c34ea71ada567"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' :
+                                        'id="xs-injectables-links-module-MetaOptionsModule-78ffbb5b8cb58ad9c0b5e7fc8c85021a76be0f02c59a58cdb124b33642d588efc359dd16a0f7e4f78d11050f6aafb97939c0f41bb6bac357a326d0773c7d5ce0"' }>
                                         <li class="link">
                                             <a href="injectables/MetaOptionsService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MetaOptionsService</a>
                                         </li>
