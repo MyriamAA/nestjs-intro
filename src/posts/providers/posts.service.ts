@@ -1,4 +1,10 @@
-import { Body, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Injectable,
+  NotFoundException,
+  RequestTimeoutException,
+} from '@nestjs/common';
 import { UsersService } from 'src/users/providers/users.service';
 import { CreatePostDto } from '../dto/create-post.dto';
 import { Repository } from 'typeorm';
@@ -114,11 +120,33 @@ export class PostsService {
    * @returns The updated post.
    */
   public async update(@Body() patchPostDto: PatchPostDto) {
-    const tags = await this.tagsService.findMultipleTags(patchPostDto.tags);
-    const post = await this.postsRepository.findOneBy({ id: patchPostDto.id });
+    let tags = undefined;
+    let post = undefined;
 
+    try {
+      tags = await this.tagsService.findMultipleTags(patchPostDto.tags);
+    } catch (error) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment. Please try later',
+      );
+    }
+
+    /**
+     * Number of tags need to be equal
+     */
+
+    if (!tags || tags.length !== patchPostDto.tags.length) {
+      throw new BadRequestException('Please check your tag IDs.');
+    }
+    try {
+      post = await this.postsRepository.findOneBy({ id: patchPostDto.id });
+    } catch (error) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment. Please try later',
+      );
+    }
     if (!post) {
-      throw new Error('Post not found');
+      throw new NotFoundException("This post doesn't exist.");
     }
 
     post.title = patchPostDto.title ?? post.title;
@@ -131,7 +159,14 @@ export class PostsService {
     post.publishOn = patchPostDto.publishOn ?? post.publishOn;
     post.tags = tags;
 
-    return await this.postsRepository.save(post);
+    try {
+      await this.postsRepository.save(post);
+    } catch (error) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment. Please try later',
+      );
+    }
+    return post;
   }
 
   /**
