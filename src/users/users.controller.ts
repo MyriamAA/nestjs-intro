@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   Body,
   Headers,
@@ -16,42 +15,52 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamDto } from './dtos/get-users-param.dto';
 import { PatchUserDto } from './dtos/patch-user.dto';
 import { UsersService } from './providers/users.service';
-import {
-  ApiOperation,
-  ApiParam,
-  ApiQuery,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 // To make parameters optional, use the ? operator
 @Controller('users')
 @ApiTags('Users')
 export class UsersController {
   constructor(
-    // Injecting user service
+    /**
+     * Injecting user service
+     */
     private readonly usersService: UsersService,
   ) {}
 
   /**
-   * Retrieves a user.
-   * @param id - The ID of the user.
+   * Retrieves a user by ID from query parameter (e.g., `id=5`).
+   * @param id - The ID of the user to fetch.
    * @returns The user details.
    */
-  @Get('')
-  @ApiOperation({ summary: 'Retrieves a user' })
-  @ApiParam({
+  @Get()
+  @ApiOperation({ summary: 'Fetch a single user by ID' })
+  @ApiQuery({
     name: 'id',
     type: 'string',
     required: true,
-    description: 'User ID',
+    description: 'The ID of the user',
   })
-  @ApiResponse({ status: 200, description: 'Returns the user' })
-  public getUser(@Query('id') id: string) {
-    return this.usersService.findOneById(parseInt(id));
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the user details',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'User not found',
+  })
+  public getUserById(@Query('id') id: string) {
+    const userId = parseInt(id, 10);
+    if (isNaN(userId)) {
+      return { error: 'Invalid ID format' };
+    }
+    return this.usersService.findOneById(userId);
   }
 
-  @Get('')
+  /**
+   * Retrieves a list of users with pagination.
+   */
+  @Get('/:id?')
   @ApiOperation({
     summary: 'Fetches a list of registered users on the application',
   })
@@ -83,6 +92,11 @@ export class UsersController {
     return this.usersService.findAll(getUserParamDto, limit, page);
   }
 
+  /**
+   * Creates a new user.
+   * @param createUserDto - The data to create a new user.
+   * @returns The created user.
+   */
   @Post()
   public createUsers(
     // Without the global validation
@@ -93,6 +107,12 @@ export class UsersController {
   ) {
     return this.usersService.createUser(createUserDto);
   }
+
+  /**
+   * Patches user information.
+   * @param patchUserDto - The data to update the user.
+   * @returns The updated user data.
+   */
   @Patch()
   public patchUser(@Body() patchUserDto: PatchUserDto) {
     return patchUserDto;
