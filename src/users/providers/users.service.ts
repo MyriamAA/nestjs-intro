@@ -1,6 +1,8 @@
 import {
   BadRequestException,
   forwardRef,
+  HttpException,
+  HttpStatus,
   Inject,
   Injectable,
   NotFoundException,
@@ -65,16 +67,19 @@ export class UsersService {
     limit: number,
     page: number,
   ) {
-    return [
+    console.log(`findall`);
+    throw new HttpException(
       {
-        firstName: 'John',
-        email: 'john@doe.com',
+        status: HttpStatus.MOVED_PERMANENTLY,
+        error: "This endpoint doesn't exist",
+        fileName: 'users.service.ts',
+        lineNumber: 71,
       },
+      HttpStatus.MOVED_PERMANENTLY,
       {
-        firstName: 'Alice',
-        email: 'alice@doe.com',
+        description: 'Occured becaused the endpoint was permanently moved',
       },
-    ];
+    );
   }
 
   /**
