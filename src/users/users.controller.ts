@@ -16,7 +16,13 @@ import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamDto } from './dtos/get-users-param.dto';
 import { PatchUserDto } from './dtos/patch-user.dto';
 import { UsersService } from './providers/users.service';
-import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 
 // To make parameters optional, use the ? operator
 @Controller('users')
@@ -26,7 +32,26 @@ export class UsersController {
     // Injecting user service
     private readonly usersService: UsersService,
   ) {}
-  @Get('/:id?')
+
+  /**
+   * Retrieves a user.
+   * @param id - The ID of the user.
+   * @returns The user details.
+   */
+  @Get('')
+  @ApiOperation({ summary: 'Retrieves a user' })
+  @ApiParam({
+    name: 'id',
+    type: 'string',
+    required: true,
+    description: 'User ID',
+  })
+  @ApiResponse({ status: 200, description: 'Returns the user' })
+  public getUser(@Query('id') id: string) {
+    return this.usersService.findOneById(parseInt(id));
+  }
+
+  @Get('')
   @ApiOperation({
     summary: 'Fetches a list of registered users on the application',
   })

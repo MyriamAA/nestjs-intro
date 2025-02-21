@@ -3,6 +3,7 @@ import {
   forwardRef,
   Inject,
   Injectable,
+  NotFoundException,
   RequestTimeoutException,
 } from '@nestjs/common';
 import { GetUsersParamDto } from '../dtos/get-users-param.dto';
@@ -13,6 +14,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import profileConfig from '../config/profile.config';
+import { NotFoundError } from 'rxjs';
 
 /**
  * Service for managing user-related operations in the Users table.
@@ -63,10 +65,6 @@ export class UsersService {
     limit: number,
     page: number,
   ) {
-    // Test the new config
-    console.log(this.profileConfiguration);
-    console.log(this.profileConfiguration.apiKey);
-
     return [
       {
         firstName: 'John',
@@ -86,9 +84,26 @@ export class UsersService {
    * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
    */
   public async findOneById(id: number) {
-    return await this.usersRepository.findOneBy({
-      id,
-    });
+    let user = undefined;
+
+    try {
+      user = await this.usersRepository.findOneBy({ id });
+    } catch (error) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment. Please try again later',
+        {
+          description: 'Error connecting to the database',
+        },
+      );
+    }
+
+    /**
+     * Handle if user does not exist
+     */
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
   }
   public async createUser(createUserDto: CreateUserDto) {
     let existingUser = undefined;
@@ -112,7 +127,16 @@ export class UsersService {
     // Create a new user
     let newUser = this.usersRepository.create(createUserDto);
 
-    newUser = await this.usersRepository.save(newUser);
+    try {
+      newUser = await this.usersRepository.save(newUser);
+    } catch (error) {
+      throw new RequestTimeoutException(
+        'Unable to process your request at the moment. Please try again later',
+        {
+          description: 'Error connecting to the database',
+        },
+      );
+    }
 
     return newUser;
   }
