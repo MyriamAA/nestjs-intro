@@ -9,5 +9,5 @@ export default registerAs('database', () => ({
   port: parseInt(process.env.DB_PORT, 10) || 5432,
   name: process.env.DB_NAME || 'nestjs-blog',
   synchronize: process.env.DB_SYNC === 'true' ? true : false,
-  autoLoadEntities: process.env.DB_AUTLOAD === 'true' ? true : false,
+  autoLoadEntities: process.env.DB_AUTOLOAD === 'true' ? true : false,
 }));
