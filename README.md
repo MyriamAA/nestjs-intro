@@ -179,11 +179,23 @@ $ npx nest generate service tags/providers/tags --flat --no-spec
 ## Generate a module
 
 ```bash
-$ nest generate module auth
+$ npx nest generate module auth
 ```
 
 ## Generate a controller
 
 ```bash
-$ nest generate controller auth --no-spec
+$ npx nest generate controller auth --no-spec
+```
+
+## Generate a provider
+
+```bash
+$ npx nest generate pr users/providers/users-create=many.provider --flat --no-spec
+```
+
+## Prettier
+
+```bash
+$ npx prettier --write .
 ```

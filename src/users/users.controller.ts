@@ -1,6 +1,5 @@
 import {
   Body,
-  Headers,
   Controller,
   Get,
   Param,
@@ -8,7 +7,6 @@ import {
   Query,
   ParseIntPipe,
   DefaultValuePipe,
-  ValidationPipe,
   Patch,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -16,6 +14,7 @@ import { GetUsersParamDto } from './dtos/get-users-param.dto';
 import { PatchUserDto } from './dtos/patch-user.dto';
 import { UsersService } from './providers/users.service';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { CreateManyUsersDto } from './dtos/create-many-users.dto';
 
 // To make parameters optional, use the ? operator
 @Controller('users')
@@ -110,18 +109,12 @@ export class UsersController {
 
   /**
    * Creates many user.
-   * @param createUserDto - The array of data to create new users.
+   * @param createManyUsersDto - The new users.
    * @returns The created user.
    */
   @Post('create-many')
-  public createManyUsers(
-    // Without the global validation
-    // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
-
-    // With
-    @Body() createUsersDto: CreateUserDto[],
-  ) {
-    return this.usersService.createMany(createUsersDto);
+  public createManyUsers(@Body() createManyUsersDto: CreateManyUsersDto) {
+    return this.usersService.createMany(createManyUsersDto);
   }
 
   /**
