@@ -109,6 +109,22 @@ export class UsersController {
   }
 
   /**
+   * Creates many user.
+   * @param createUserDto - The array of data to create new users.
+   * @returns The created user.
+   */
+  @Post('create-many')
+  public createManyUsers(
+    // Without the global validation
+    // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
+
+    // With
+    @Body() createUsersDto: CreateUserDto[],
+  ) {
+    return this.usersService.createMany(createUsersDto);
+  }
+
+  /**
    * Patches user information.
    * @param patchUserDto - The data to update the user.
    * @returns The updated user data.
