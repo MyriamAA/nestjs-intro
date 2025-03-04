@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TagsModule } from './tags/tags.module';
 import { MetaOptionsModule } from './meta-options/meta-options.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { PaginationModule } from './common/pagination/pagination.module';
 import appConfig from './config/app.config'; // Importing the default app configuration
 import databaseConfig from './config/database.config';
 import environmentValidation from './config/environment.validation';
@@ -85,6 +86,8 @@ const ENV = process.env.NODE_ENV;
      * MetaOptionsModule: Deals with metadata options for various entities in the app.
      */
     MetaOptionsModule,
+
+    PaginationModule,
   ],
 
   /**

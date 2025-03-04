@@ -216,3 +216,15 @@ We can pass in the skip and take.
 The _skip_ is the number of post entries that you want to skip from the first page. So if your first page has ten posts in the second page, you will have this post starting from post number 11 to post number 20.
 
 So basically you're skipping ten posts and _take_ is the number of posts that you want to return in one query.
+
+## Pagination module
+
+```bash
+npx nest g module /common/pagination/pagination --flat --no-spec
+```
+
+## Pagination provider
+
+```bash
+npx nest g pr /common/pagination/prroviders/pagination --flat --no-spec
+```
