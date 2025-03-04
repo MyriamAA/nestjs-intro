@@ -1,5 +1,9 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateUserDto } from './create-user.dto';
 
-// Extend the create user dto to not repeat the code
+/**
+ * DTO for updating a user partially.
+ *
+ * Extends `CreateUserDto`, making all its properties optional.
+ */
 export class PatchUserDto extends PartialType(CreateUserDto) {}

@@ -20,59 +20,39 @@ import { UsersCreateManyProvider } from './users-create-many.provider';
 import { CreateManyUsersDto } from '../dtos/create-many-users.dto';
 
 /**
- * Service for managing user-related operations in the Users table.
- *
- * This service interacts with the Users table to perform CRUD operations.
- * It also uses the AuthService to handle authentication-related checks and
- * dependencies while ensuring circular dependencies are avoided.
+ * Service for managing users.
  */
 @Injectable()
 export class UsersService {
   /**
    * Constructs the UsersService with necessary dependencies.
-   *
-   * @param {AuthService} authService - Service for handling authentication-related operations.
+   * @param authService - Handles authentication-related operations.
+   * @param usersRepository - The repository for managing users in the database.
+   * @param profileConfiguration - Injected profile configuration.
+   * @param dataSource - The database connection source.
+   * @param usersCreateManyProvider - Service to handle bulk user creation.
    */
   constructor(
     @Inject(forwardRef(() => AuthService))
     private readonly authService: AuthService,
 
-    /**
-     * Injecting usersRepository
-     */
     @InjectRepository(User)
     private usersRepository: Repository<User>,
 
-    // /**
-    //  * Injecting ConfigService
-    //  */
-    // private readonly configService: ConfigService,
-
-    /**
-     * Inject profileConfig
-     */
     @Inject(profileConfig.KEY)
     private readonly profileConfiguration: ConfigType<typeof profileConfig>,
 
-    /**
-     * Inject datasource
-     */
-
     private readonly dataSource: DataSource,
-
-    /**
-     * Inject usersCreateManyProvider
-     */
     private readonly usersCreateManyProvider: UsersCreateManyProvider,
   ) {}
 
   /**
-   * Retrieves a list of all users from the database.
-   *
-   * @param {GetUsersParamDto} getUserParamDto - DTO containing filters for user retrieval.
-   * @param {number} limit - The maximum number of users to return.
-   * @param {number} page - The page number for pagination.
-   * @returns {Array<{ firstName: string; email: string }>} Array of user objects containing basic details.
+   * Retrieves all users with optional filters.
+   * @param getUserParamDto - DTO containing filter criteria.
+   * @param limit - The number of users to retrieve.
+   * @param page - The page number.
+   * @returns A list of users.
+   * @throws {HttpException} If the endpoint is deprecated.
    */
   public findAll(
     getUserParamDto: GetUsersParamDto,
@@ -88,74 +68,67 @@ export class UsersService {
       },
       HttpStatus.MOVED_PERMANENTLY,
       {
-        description: 'Occured becaused the endpoint was permanently moved',
+        description: 'The endpoint was permanently moved',
       },
     );
   }
 
   /**
-   * Retrieves a single user by their unique identifier.
-   *
-   * @param {number} id - The unique ID of the user to retrieve.
-   * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
+   * Retrieves a user by ID.
+   * @param id - The unique user ID.
+   * @returns The user details.
+   * @throws {NotFoundException} If the user is not found.
    */
   public async findOneById(id: number) {
-    let user = undefined;
-
+    let user;
     try {
       user = await this.usersRepository.findOneBy({ id });
     } catch (error) {
-      throw new RequestTimeoutException(
-        'Unable to process your request at the moment. Please try again later',
-        {
-          description: 'Error connecting to the database',
-        },
-      );
+      throw new RequestTimeoutException('Database connection error');
     }
 
-    /**
-     * Handle if user does not exist
-     */
     if (!user) {
       throw new NotFoundException('User not found');
     }
     return user;
   }
+
+  /**
+   * Creates a new user.
+   * @param createUserDto - Data for creating the user.
+   * @returns The created user.
+   * @throws {BadRequestException} If the user already exists.
+   */
   public async createUser(createUserDto: CreateUserDto) {
-    let existingUser = undefined;
+    let existingUser;
     try {
       existingUser = await this.usersRepository.findOne({
         where: { email: createUserDto.email },
       });
     } catch (error) {
-      throw new RequestTimeoutException(
-        'Unable to process your request at the moment. Please try again later',
-        {
-          description: 'Error connecting to the database',
-        },
-      );
+      throw new RequestTimeoutException('Database connection error');
     }
-    // Handle exception
 
     if (existingUser) {
-      throw new BadRequestException('The user already exists.');
+      throw new BadRequestException('User already exists.');
     }
-    // Create a new user
+
     let newUser = this.usersRepository.create(createUserDto);
 
     try {
       newUser = await this.usersRepository.save(newUser);
     } catch (error) {
-      throw new RequestTimeoutException(
-        'Unable to process your request at the moment. Please try again later',
-        {
-          description: 'Error connecting to the database',
-        },
-      );
+      throw new RequestTimeoutException('Database connection error');
     }
 
     return newUser;
   }
+
+  /**
+   * Creates multiple users in batch.
+   * @param createManyUsersDto - DTO containing multiple user records.
+   * @returns The created users.
+   */
   public async createMany(createManyUsersDto: CreateManyUsersDto) {
     return await this.usersCreateManyProvider.createMany(createManyUsersDto);
   }

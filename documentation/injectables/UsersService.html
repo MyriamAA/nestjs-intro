@@ -130,10 +130,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Service for managing user-related operations in the Users table.</p>
-<p>This service interacts with the Users table to perform CRUD operations.
-It also uses the AuthService to handle authentication-related checks and
-dependencies while ensuring circular dependencies are avoided.</p>
+                <p>Service for managing users.</p>
 
             </p>
 
@@ -194,7 +191,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/users/providers/users.service.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/users/providers/users.service.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -227,7 +224,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                     
                                                         <td>
                                                                 <ul>
-<li>Service for handling authentication-related operations.</li>
+<li>Handles authentication-related operations.</li>
 </ul>
 
                                                         </td>
@@ -244,6 +241,10 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                     </td>
                                                     
                                                         <td>
+                                                                <ul>
+<li>The repository for managing users in the database.</li>
+</ul>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -258,6 +259,10 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                     </td>
                                                     
                                                         <td>
+                                                                <ul>
+<li>Injected profile configuration.</li>
+</ul>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -272,6 +277,10 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                     </td>
                                                     
                                                         <td>
+                                                                <ul>
+<li>The database connection source.</li>
+</ul>
+
                                                         </td>
                                                 </tr>
                                                 <tr>
@@ -286,6 +295,10 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                     </td>
                                                     
                                                         <td>
+                                                                <ul>
+<li>Service to handle bulk user creation.</li>
+</ul>
+
                                                         </td>
                                                 </tr>
                                         </tbody>
@@ -325,14 +338,16 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="159"
-                                    class="link-to-prism">src/users/providers/users.service.ts:159</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/users/providers/users.service.ts:132</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates multiple users in batch.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -343,6 +358,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -357,6 +373,12 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>DTO containing multiple user records.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -366,7 +388,8 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The created users.</p>
+
                             </div>
                 </td>
             </tr>
@@ -395,14 +418,16 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="124"
-                                    class="link-to-prism">src/users/providers/users.service.ts:124</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/users/providers/users.service.ts:102</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -413,6 +438,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -427,6 +453,12 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Data for creating the user.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -436,7 +468,8 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The created user.</p>
+
                             </div>
                 </td>
             </tr>
@@ -464,15 +497,15 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="77"
-                                    class="link-to-prism">src/users/providers/users.service.ts:77</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">src/users/providers/users.service.ts:57</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Retrieves a list of all users from the database.</p>
+                        <div class="io-description"><p>Retrieves all users with optional filters.</p>
 </div>
 
                             <div class="io-description">
@@ -501,7 +534,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                                             <td>
                                                     <ul>
-<li>DTO containing filters for user retrieval.</li>
+<li>DTO containing filter criteria.</li>
 </ul>
 
                                             </td>
@@ -519,7 +552,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                                             <td>
                                                     <ul>
-<li>The maximum number of users to return.</li>
+<li>The number of users to retrieve.</li>
 </ul>
 
                                             </td>
@@ -537,7 +570,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                                             <td>
                                                     <ul>
-<li>The page number for pagination.</li>
+<li>The page number.</li>
 </ul>
 
                                             </td>
@@ -550,7 +583,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                         </div>
                             <div class="io-description">
-                                <p>Array of user objects containing basic details.</p>
+                                <p>A list of users.</p>
 
                             </div>
                 </td>
@@ -580,15 +613,15 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/users/providers/users.service.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="82"
+                                    class="link-to-prism">src/users/providers/users.service.ts:82</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Retrieves a single user by their unique identifier.</p>
+                        <div class="io-description"><p>Retrieves a user by ID.</p>
 </div>
 
                             <div class="io-description">
@@ -617,7 +650,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                                             <td>
                                                     <ul>
-<li>The unique ID of the user to retrieve.</li>
+<li>The unique user ID.</li>
 </ul>
 
                                             </td>
@@ -630,7 +663,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                         </div>
                             <div class="io-description">
-                                <p>A user object containing their details.</p>
+                                <p>The user details.</p>
 
                             </div>
                 </td>
@@ -665,59 +698,39 @@ import { UsersCreateManyProvider } from &#x27;./users-create-many.provider&#x27;
 import { CreateManyUsersDto } from &#x27;../dtos/create-many-users.dto&#x27;;
 
 /**
- * Service for managing user-related operations in the Users table.
- *
- * This service interacts with the Users table to perform CRUD operations.
- * It also uses the AuthService to handle authentication-related checks and
- * dependencies while ensuring circular dependencies are avoided.
+ * Service for managing users.
  */
 @Injectable()
 export class UsersService {
   /**
    * Constructs the UsersService with necessary dependencies.
-   *
-   * @param {AuthService} authService - Service for handling authentication-related operations.
+   * @param authService - Handles authentication-related operations.
+   * @param usersRepository - The repository for managing users in the database.
+   * @param profileConfiguration - Injected profile configuration.
+   * @param dataSource - The database connection source.
+   * @param usersCreateManyProvider - Service to handle bulk user creation.
    */
   constructor(
     @Inject(forwardRef(() &#x3D;&gt; AuthService))
     private readonly authService: AuthService,
 
-    /**
-     * Injecting usersRepository
-     */
     @InjectRepository(User)
     private usersRepository: Repository&lt;User&gt;,
 
-    // /**
-    //  * Injecting ConfigService
-    //  */
-    // private readonly configService: ConfigService,
-
-    /**
-     * Inject profileConfig
-     */
     @Inject(profileConfig.KEY)
     private readonly profileConfiguration: ConfigType&lt;typeof profileConfig&gt;,
 
-    /**
-     * Inject datasource
-     */
-
     private readonly dataSource: DataSource,
-
-    /**
-     * Inject usersCreateManyProvider
-     */
     private readonly usersCreateManyProvider: UsersCreateManyProvider,
   ) {}
 
   /**
-   * Retrieves a list of all users from the database.
-   *
-   * @param {GetUsersParamDto} getUserParamDto - DTO containing filters for user retrieval.
-   * @param {number} limit - The maximum number of users to return.
-   * @param {number} page - The page number for pagination.
-   * @returns {Array&lt;{ firstName: string; email: string }&gt;} Array of user objects containing basic details.
+   * Retrieves all users with optional filters.
+   * @param getUserParamDto - DTO containing filter criteria.
+   * @param limit - The number of users to retrieve.
+   * @param page - The page number.
+   * @returns A list of users.
+   * @throws {HttpException} If the endpoint is deprecated.
    */
   public findAll(
     getUserParamDto: GetUsersParamDto,
@@ -733,74 +746,67 @@ export class UsersService {
       },
       HttpStatus.MOVED_PERMANENTLY,
       {
-        description: &#x27;Occured becaused the endpoint was permanently moved&#x27;,
+        description: &#x27;The endpoint was permanently moved&#x27;,
       },
     );
   }
 
   /**
-   * Retrieves a single user by their unique identifier.
-   *
-   * @param {number} id - The unique ID of the user to retrieve.
-   * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
+   * Retrieves a user by ID.
+   * @param id - The unique user ID.
+   * @returns The user details.
+   * @throws {NotFoundException} If the user is not found.
    */
   public async findOneById(id: number) {
-    let user &#x3D; undefined;
-
+    let user;
     try {
       user &#x3D; await this.usersRepository.findOneBy({ id });
     } catch (error) {
-      throw new RequestTimeoutException(
-        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
-        {
-          description: &#x27;Error connecting to the database&#x27;,
-        },
-      );
+      throw new RequestTimeoutException(&#x27;Database connection error&#x27;);
     }
 
-    /**
-     * Handle if user does not exist
-     */
     if (!user) {
       throw new NotFoundException(&#x27;User not found&#x27;);
     }
     return user;
   }
+
+  /**
+   * Creates a new user.
+   * @param createUserDto - Data for creating the user.
+   * @returns The created user.
+   * @throws {BadRequestException} If the user already exists.
+   */
   public async createUser(createUserDto: CreateUserDto) {
-    let existingUser &#x3D; undefined;
+    let existingUser;
     try {
       existingUser &#x3D; await this.usersRepository.findOne({
         where: { email: createUserDto.email },
       });
     } catch (error) {
-      throw new RequestTimeoutException(
-        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
-        {
-          description: &#x27;Error connecting to the database&#x27;,
-        },
-      );
+      throw new RequestTimeoutException(&#x27;Database connection error&#x27;);
     }
-    // Handle exception
 
     if (existingUser) {
-      throw new BadRequestException(&#x27;The user already exists.&#x27;);
+      throw new BadRequestException(&#x27;User already exists.&#x27;);
     }
-    // Create a new user
+
     let newUser &#x3D; this.usersRepository.create(createUserDto);
 
     try {
       newUser &#x3D; await this.usersRepository.save(newUser);
     } catch (error) {
-      throw new RequestTimeoutException(
-        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
-        {
-          description: &#x27;Error connecting to the database&#x27;,
-        },
-      );
+      throw new RequestTimeoutException(&#x27;Database connection error&#x27;);
     }
 
     return newUser;
   }
+
+  /**
+   * Creates multiple users in batch.
+   * @param createManyUsersDto - DTO containing multiple user records.
+   * @returns The created users.
+   */
   public async createMany(createManyUsersDto: CreateManyUsersDto) {
     return await this.usersCreateManyProvider.createMany(createManyUsersDto);
   }

@@ -16,19 +16,20 @@ import { UsersService } from './providers/users.service';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateManyUsersDto } from './dtos/create-many-users.dto';
 
-// To make parameters optional, use the ? operator
+/**
+ * Controller for handling user-related requests.
+ */
 @Controller('users')
 @ApiTags('Users')
 export class UsersController {
-  constructor(
-    /**
-     * Injecting user service
-     */
-    private readonly usersService: UsersService,
-  ) {}
+  /**
+   * Constructs the UsersController.
+   * @param usersService - The service handling user operations.
+   */
+  constructor(private readonly usersService: UsersService) {}
 
   /**
-   * Retrieves a user by ID from query parameter (e.g., `id=5`).
+   * Retrieves a user by ID from query parameters (e.g., `id=5`).
    * @param id - The ID of the user to fetch.
    * @returns The user details.
    */
@@ -42,12 +43,9 @@ export class UsersController {
   })
   @ApiResponse({
     status: 200,
-    description: 'Returns the user details',
+    description: 'User details retrieved successfully',
   })
-  @ApiResponse({
-    status: 404,
-    description: 'User not found',
-  })
+  @ApiResponse({ status: 404, description: 'User not found' })
   public getUserById(@Query('id') id: string) {
     const userId = parseInt(id, 10);
     if (isNaN(userId)) {
@@ -58,16 +56,16 @@ export class UsersController {
 
   /**
    * Retrieves a list of users with pagination.
+   * @param getUserParamDto - DTO containing filter parameters.
+   * @param limit - Number of users per page.
+   * @param page - Page number.
+   * @returns A list of users.
    */
   @Get('/:id?')
   @ApiOperation({
-    summary: 'Fetches a list of registered users on the application',
+    summary: 'Fetch all registered users with optional pagination',
   })
-  // We can add multiple api response
-  @ApiResponse({
-    status: 200,
-    description: 'Users fetched successfully based on the query',
-  })
+  @ApiResponse({ status: 200, description: 'Users retrieved successfully' })
   @ApiQuery({
     name: 'limit',
     type: 'number',
@@ -75,14 +73,7 @@ export class UsersController {
     description: 'The number of entries returned per query',
     example: 10,
   })
-  @ApiQuery({
-    name: 'page',
-    type: 'number',
-    required: false,
-    description:
-      'The position of the page number that you want the API to return',
-    example: 1,
-  })
+  @ApiQuery({ name: 'page', type: 'number', required: false, example: 1 })
   public getUsers(
     @Param() getUserParamDto: GetUsersParamDto,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
@@ -93,11 +84,11 @@ export class UsersController {
 
   /**
    * Creates a new user.
-   * @param createUserDto - The data to create a new user.
+   * @param createUserDto - Data required to create a user.
    * @returns The created user.
    */
   @Post()
-  public createUsers(
+  public createUser(
     // Without the global validation
     // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
 
@@ -108,9 +99,9 @@ export class UsersController {
   }
 
   /**
-   * Creates many user.
-   * @param createManyUsersDto - The new users.
-   * @returns The created user.
+   * Creates multiple users.
+   * @param createManyUsersDto - The data to create multiple users.
+   * @returns The created users.
    */
   @Post('create-many')
   public createManyUsers(@Body() createManyUsersDto: CreateManyUsersDto) {
@@ -118,9 +109,9 @@ export class UsersController {
   }
 
   /**
-   * Patches user information.
-   * @param patchUserDto - The data to update the user.
-   * @returns The updated user data.
+   * Updates user information.
+   * @param patchUserDto - Data containing updates for the user.
+   * @returns The updated user.
    */
   @Patch()
   public patchUser(@Body() patchUserDto: PatchUserDto) {

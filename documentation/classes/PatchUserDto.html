@@ -130,6 +130,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>DTO for updating a user partially.</p>
+<p>Extends <code>CreateUserDto</code>, making all its properties optional.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -156,7 +164,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { PartialType } from &#x27;@nestjs/mapped-types&#x27;;
 import { CreateUserDto } from &#x27;./create-user.dto&#x27;;
 
-// Extend the create user dto to not repeat the code
+/**
+ * DTO for updating a user partially.
+ *
+ * Extends &#x60;CreateUserDto&#x60;, making all its properties optional.
+ */
 export class PatchUserDto extends PartialType(CreateUserDto) {}
 </code></pre>
     </div>

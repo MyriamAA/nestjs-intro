@@ -130,6 +130,13 @@
             </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Controller for handling user-related requests.</p>
+
+            </p>
 
 
 
@@ -155,7 +162,7 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Public</span>
-                                <a href="#createUsers" >createUsers</a>
+                                <a href="#createUser" >createUser</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -227,15 +234,15 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="116"
-                                    class="link-to-prism">src/users/users.controller.ts:116</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/users/users.controller.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Creates many user.</p>
+                        <div class="io-description"><p>Creates multiple users.</p>
 </div>
 
                             <div class="io-description">
@@ -264,7 +271,7 @@
 
                                             <td>
                                                     <ul>
-<li>The new users.</li>
+<li>The data to create multiple users.</li>
 </ul>
 
                                             </td>
@@ -277,7 +284,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>The created user.</p>
+                                <p>The created users.</p>
 
                             </div>
                 </td>
@@ -288,19 +295,19 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="createUsers"></a>
+                    <a name="createUser"></a>
                     <span class="name">
                             <span class="modifier"></span>
                             <span class="modifier">Public</span>
-                        <span ><b>createUsers</b></span>
-                        <a href="#createUsers"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>createUser</b></span>
+                        <a href="#createUser"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                         <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>createUsers(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
+                    <code>createUser(createUserDto: <a href="../classes/CreateUserDto.html" target="_self">CreateUserDto</a>)</code>
                 </td>
             </tr>
 
@@ -314,8 +321,8 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="100"
-                                    class="link-to-prism">src/users/users.controller.ts:100</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="91"
+                                    class="link-to-prism">src/users/users.controller.ts:91</a></div>
                         </td>
                     </tr>
 
@@ -351,7 +358,7 @@
 
                                             <td>
                                                     <ul>
-<li>The data to create a new user.</li>
+<li>Data required to create a user.</li>
 </ul>
 
                                             </td>
@@ -399,21 +406,21 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get()<br />@ApiOperation({summary: &#x27;Fetch a single user by ID&#x27;})<br />@ApiQuery({name: &#x27;id&#x27;, type: &#x27;string&#x27;, required: true, description: &#x27;The ID of the user&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Returns the user details&#x27;})<br />@ApiResponse({status: 404, description: &#x27;User not found&#x27;})<br /></code>
+                    <code>@Get()<br />@ApiOperation({summary: &#x27;Fetch a single user by ID&#x27;})<br />@ApiQuery({name: &#x27;id&#x27;, type: &#x27;string&#x27;, required: true, description: &#x27;The ID of the user&#x27;})<br />@ApiResponse({status: 200, description: &#x27;User details retrieved successfully&#x27;})<br />@ApiResponse({status: 404, description: &#x27;User not found&#x27;})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="51"
-                                    class="link-to-prism">src/users/users.controller.ts:51</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/users/users.controller.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Retrieves a user by ID from query parameter (e.g., <code>id=5</code>).</p>
+                        <div class="io-description"><p>Retrieves a user by ID from query parameters (e.g., <code>id=5</code>).</p>
 </div>
 
                             <div class="io-description">
@@ -490,14 +497,14 @@
                 <td class="col-md-4">
                     <b>Decorators : </b>
                     <br />
-                    <code>@Get(&#x27;/:id?&#x27;)<br />@ApiOperation({summary: &#x27;Fetches a list of registered users on the application&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Users fetched successfully based on the query&#x27;})<br />@ApiQuery({name: &#x27;limit&#x27;, type: &#x27;number&#x27;, required: false, description: &#x27;The number of entries returned per query&#x27;, example: 10})<br />@ApiQuery({name: &#x27;page&#x27;, type: &#x27;number&#x27;, required: false, description: &#x27;The position of the page number that you want the API to return&#x27;, example: 1})<br /></code>
+                    <code>@Get(&#x27;/:id?&#x27;)<br />@ApiOperation({summary: &#x27;Fetch all registered users with optional pagination&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Users retrieved successfully&#x27;})<br />@ApiQuery({name: &#x27;limit&#x27;, type: &#x27;number&#x27;, required: false, description: &#x27;The number of entries returned per query&#x27;, example: 10})<br />@ApiQuery({name: &#x27;page&#x27;, type: &#x27;number&#x27;, required: false, example: 1})<br /></code>
                 </td>
             </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="86"
-                                    class="link-to-prism">src/users/users.controller.ts:86</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/users/users.controller.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -516,6 +523,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -530,6 +538,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>DTO containing filter parameters.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>limit</td>
@@ -542,6 +556,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Number of users per page.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>page</td>
@@ -554,6 +574,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Page number.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -563,7 +589,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A list of users.</p>
+
                             </div>
                 </td>
             </tr>
@@ -599,15 +626,15 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/users/users.controller.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/users/users.controller.ts:117</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Patches user information.</p>
+                        <div class="io-description"><p>Updates user information.</p>
 </div>
 
                             <div class="io-description">
@@ -636,7 +663,7 @@
 
                                             <td>
                                                     <ul>
-<li>The data to update the user.</li>
+<li>Data containing updates for the user.</li>
 </ul>
 
                                             </td>
@@ -649,7 +676,7 @@
 
                         </div>
                             <div class="io-description">
-                                <p>The updated user data.</p>
+                                <p>The updated user.</p>
 
                             </div>
                 </td>
@@ -678,19 +705,20 @@ import { UsersService } from &#x27;./providers/users.service&#x27;;
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { CreateManyUsersDto } from &#x27;./dtos/create-many-users.dto&#x27;;
 
-// To make parameters optional, use the ? operator
+/**
+ * Controller for handling user-related requests.
+ */
 @Controller(&#x27;users&#x27;)
 @ApiTags(&#x27;Users&#x27;)
 export class UsersController {
-  constructor(
-    /**
-     * Injecting user service
-     */
-    private readonly usersService: UsersService,
-  ) {}
+  /**
+   * Constructs the UsersController.
+   * @param usersService - The service handling user operations.
+   */
+  constructor(private readonly usersService: UsersService) {}
 
   /**
-   * Retrieves a user by ID from query parameter (e.g., &#x60;id&#x3D;5&#x60;).
+   * Retrieves a user by ID from query parameters (e.g., &#x60;id&#x3D;5&#x60;).
    * @param id - The ID of the user to fetch.
    * @returns The user details.
    */
@@ -704,12 +732,9 @@ export class UsersController {
   })
   @ApiResponse({
     status: 200,
-    description: &#x27;Returns the user details&#x27;,
+    description: &#x27;User details retrieved successfully&#x27;,
   })
-  @ApiResponse({
-    status: 404,
-    description: &#x27;User not found&#x27;,
-  })
+  @ApiResponse({ status: 404, description: &#x27;User not found&#x27; })
   public getUserById(@Query(&#x27;id&#x27;) id: string) {
     const userId &#x3D; parseInt(id, 10);
     if (isNaN(userId)) {
@@ -720,16 +745,16 @@ export class UsersController {
 
   /**
    * Retrieves a list of users with pagination.
+   * @param getUserParamDto - DTO containing filter parameters.
+   * @param limit - Number of users per page.
+   * @param page - Page number.
+   * @returns A list of users.
    */
   @Get(&#x27;/:id?&#x27;)
   @ApiOperation({
-    summary: &#x27;Fetches a list of registered users on the application&#x27;,
+    summary: &#x27;Fetch all registered users with optional pagination&#x27;,
   })
-  // We can add multiple api response
-  @ApiResponse({
-    status: 200,
-    description: &#x27;Users fetched successfully based on the query&#x27;,
-  })
+  @ApiResponse({ status: 200, description: &#x27;Users retrieved successfully&#x27; })
   @ApiQuery({
     name: &#x27;limit&#x27;,
     type: &#x27;number&#x27;,
@@ -737,14 +762,7 @@ export class UsersController {
     description: &#x27;The number of entries returned per query&#x27;,
     example: 10,
   })
-  @ApiQuery({
-    name: &#x27;page&#x27;,
-    type: &#x27;number&#x27;,
-    required: false,
-    description:
-      &#x27;The position of the page number that you want the API to return&#x27;,
-    example: 1,
-  })
+  @ApiQuery({ name: &#x27;page&#x27;, type: &#x27;number&#x27;, required: false, example: 1 })
   public getUsers(
     @Param() getUserParamDto: GetUsersParamDto,
     @Query(&#x27;limit&#x27;, new DefaultValuePipe(10), ParseIntPipe) limit: number,
@@ -755,11 +773,11 @@ export class UsersController {
 
   /**
    * Creates a new user.
-   * @param createUserDto - The data to create a new user.
+   * @param createUserDto - Data required to create a user.
    * @returns The created user.
    */
   @Post()
-  public createUsers(
+  public createUser(
     // Without the global validation
     // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
 
@@ -770,9 +788,9 @@ export class UsersController {
   }
 
   /**
-   * Creates many user.
-   * @param createManyUsersDto - The new users.
-   * @returns The created user.
+   * Creates multiple users.
+   * @param createManyUsersDto - The data to create multiple users.
+   * @returns The created users.
    */
   @Post(&#x27;create-many&#x27;)
   public createManyUsers(@Body() createManyUsersDto: CreateManyUsersDto) {
@@ -780,9 +798,9 @@ export class UsersController {
   }
 
   /**
-   * Patches user information.
-   * @param patchUserDto - The data to update the user.
-   * @returns The updated user data.
+   * Updates user information.
+   * @param patchUserDto - Data containing updates for the user.
+   * @returns The updated user.
    */
   @Patch()
   public patchUser(@Body() patchUserDto: PatchUserDto) {

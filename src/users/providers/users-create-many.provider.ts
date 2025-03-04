@@ -7,22 +7,31 @@ import { User } from '../user.entity';
 import { DataSource } from 'typeorm';
 import { CreateManyUsersDto } from '../dtos/create-many-users.dto';
 
+/**
+ * Service responsible for handling bulk user creation.
+ * Utilizes a query runner for transaction-based insertion of multiple users.
+ */
 @Injectable()
 export class UsersCreateManyProvider {
-  constructor(
-    /**
-     * Inject datasource
-     */
+  /**
+   * Constructor for UsersCreateManyProvider.
+   * @param dataSource - The TypeORM DataSource instance for database operations.
+   */
+  constructor(private readonly dataSource: DataSource) {}
 
-    private readonly dataSource: DataSource,
-  ) {}
+  /**
+   * Creates multiple users in a transactional manner.
+   * @param createManyUsersDto - DTO containing an array of user objects to be created.
+   * @returns Promise<User[]> - A list of successfully created users.
+   * @throws {RequestTimeoutException} - If unable to connect to the database.
+   * @throws {ConflictException} - If the transaction fails.
+   */
   public async createMany(createManyUsersDto: CreateManyUsersDto) {
     const newUsers: User[] = [];
-    // Create Query runner instance
     const queryRunner = this.dataSource.createQueryRunner();
-    try {
-      // Connect query runner to datasource
 
+    try {
+      // Establish connection and begin transaction
       await queryRunner.connect();
 
       // Start transaction
@@ -32,24 +41,24 @@ export class UsersCreateManyProvider {
     }
 
     try {
+      // Iterate over users and save each one
       for (const user of createManyUsersDto.users) {
         const newUser = queryRunner.manager.create(User, user);
         const result = await queryRunner.manager.save(newUser);
-
         newUsers.push(result);
       }
-      // If successful, commit to the database
+
+      // Commit the transaction upon successful insertion
       await queryRunner.commitTransaction();
     } catch (error) {
-      // If unsuccessful rollback
+      // Rollback transaction in case of failure
       await queryRunner.rollbackTransaction();
-
       throw new ConflictException('Could not complete the transaction', {
         description: String(error),
       });
     } finally {
       try {
-        // Release connection
+        // Release the query runner connection
         await queryRunner.release();
       } catch (error) {
         throw new RequestTimeoutException('Could not release the connection', {
@@ -57,6 +66,7 @@ export class UsersCreateManyProvider {
         });
       }
     }
+
     return newUsers;
   }
 }

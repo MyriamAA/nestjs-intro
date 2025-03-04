@@ -1,24 +1,42 @@
 import { Post } from 'src/posts/post.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-// Column typees differ if we're using SQL or PostgreSQL check typeorm website
-// Should match the DTO
+/**
+ * Represents a user entity in the database.
+ */
 @Entity()
 export class User {
+  /**
+   * Unique identifier for the user.
+   */
   @PrimaryGeneratedColumn()
   id: number;
+
+  /**
+   * The first name of the user.
+   */
   @Column({
     type: 'varchar',
     length: 96,
     nullable: false,
   })
   firstName: string;
+
+  /**
+   * The last name of the user.
+   * This field is optional.
+   */
   @Column({
     type: 'varchar',
     length: 96,
     nullable: true,
   })
   lastName: string;
+
+  /**
+   * The email address of the user.
+   * Must be unique.
+   */
   @Column({
     type: 'varchar',
     length: 96,
@@ -26,6 +44,10 @@ export class User {
     unique: true,
   })
   email: string;
+
+  /**
+   * The password of the user.
+   */
   @Column({
     type: 'varchar',
     length: 96,
@@ -33,7 +55,9 @@ export class User {
   })
   password: string;
 
-  // A user can have many posts
+  /**
+   * The list of posts authored by the user.
+   */
   @OneToMany(() => Post, (post) => post.author)
   posts: Post[];
 }
