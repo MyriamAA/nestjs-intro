@@ -19,8 +19,14 @@ async function bootstrap() {
       whitelist: true, // Strips properties that are not defined in DTOs
       forbidNonWhitelisted: true, // Throws an error if non-whitelisted properties are provided
       transform: true, // Automatically transforms payloads to DTO types
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
+
+  // When the transformOptions flag is set to true, the validation pipes takes care of validation so we dont have to add decorators:
+  // @Type(() => Number)
 
   // Swagger API documentation configuration
   const config = new DocumentBuilder()

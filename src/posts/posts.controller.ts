@@ -19,6 +19,7 @@ import {
 } from '@nestjs/swagger';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PatchPostDto } from './dto/patch-post.dto';
+import { GetPostsDto } from './dto/get-posts.dto';
 
 /**
  * Controller for managing posts.
@@ -45,7 +46,11 @@ export class PostsController {
     description: 'User ID (optional)',
   })
   @ApiResponse({ status: 200, description: 'Returns the list of posts' })
-  public getPosts(@Param('userId') userId: string) {
+  public getPosts(
+    @Param('userId') userId: string,
+    @Query() postQuery: GetPostsDto,
+  ) {
+    console.log(postQuery);
     return this.postsService.findAll(userId);
   }
 
