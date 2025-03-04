@@ -155,6 +155,11 @@ dependencies while ensuring circular dependencies are avoided.</p>
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Async</span>
+                                <a href="#createMany" >createMany</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Async</span>
                                 <a href="#createUser" >createUser</a>
                             </li>
                             <li>
@@ -184,12 +189,12 @@ dependencies while ensuring circular dependencies are avoided.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, usersRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, profileConfiguration: ConfigType<>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, usersRepository: <a href="../entitys/User.html" target="_self">Repository&lt;User&gt;</a>, profileConfiguration: ConfigType<>, dataSource: DataSource, usersCreateManyProvider: <a href="../injectables/UsersCreateManyProvider.html" target="_self">UsersCreateManyProvider</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/users/providers/users.service.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/users/providers/users.service.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -255,6 +260,34 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                                         <td>
                                                         </td>
                                                 </tr>
+                                                <tr>
+                                                        <td>dataSource</td>
+                                                  
+                                                        <td>
+                                                                    <code>DataSource</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>usersCreateManyProvider</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UsersCreateManyProvider.html" target="_self" >UsersCreateManyProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -269,6 +302,76 @@ dependencies while ensuring circular dependencies are avoided.</p>
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createMany"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Async</span>
+                        <span ><b>createMany</b></span>
+                        <a href="#createMany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createMany(createManyUsersDto: <a href="../classes/CreateManyUsersDto.html" target="_self">CreateManyUsersDto</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="159"
+                                    class="link-to-prism">src/users/providers/users.service.ts:159</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>createManyUsersDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateManyUsersDto.html" target="_self" >CreateManyUsersDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>unknown</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -292,8 +395,8 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/users/providers/users.service.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/users/providers/users.service.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -361,8 +464,8 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/users/providers/users.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="77"
+                                    class="link-to-prism">src/users/providers/users.service.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -443,7 +546,7 @@ dependencies while ensuring circular dependencies are avoided.</p>
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>{}</code>
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
                             <div class="io-description">
@@ -477,8 +580,8 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="82"
-                                    class="link-to-prism">src/users/providers/users.service.ts:82</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/users/providers/users.service.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -540,15 +643,26 @@ dependencies while ensuring circular dependencies are avoided.</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { forwardRef, Inject, Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  BadRequestException,
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  NotFoundException,
+  RequestTimeoutException,
+} from &#x27;@nestjs/common&#x27;;
 import { GetUsersParamDto } from &#x27;../dtos/get-users-param.dto&#x27;;
 import { AuthService } from &#x27;src/auth/providers/auth.service&#x27;;
-import { Repository } from &#x27;typeorm&#x27;;
+import { DataSource, Repository } from &#x27;typeorm&#x27;;
 import { User } from &#x27;../user.entity&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { CreateUserDto } from &#x27;../dtos/create-user.dto&#x27;;
-import { ConfigService, ConfigType } from &#x27;@nestjs/config&#x27;;
+import { ConfigType } from &#x27;@nestjs/config&#x27;;
 import profileConfig from &#x27;../config/profile.config&#x27;;
+import { UsersCreateManyProvider } from &#x27;./users-create-many.provider&#x27;;
+import { CreateManyUsersDto } from &#x27;../dtos/create-many-users.dto&#x27;;
 
 /**
  * Service for managing user-related operations in the Users table.
@@ -584,6 +698,17 @@ export class UsersService {
      */
     @Inject(profileConfig.KEY)
     private readonly profileConfiguration: ConfigType&lt;typeof profileConfig&gt;,
+
+    /**
+     * Inject datasource
+     */
+
+    private readonly dataSource: DataSource,
+
+    /**
+     * Inject usersCreateManyProvider
+     */
+    private readonly usersCreateManyProvider: UsersCreateManyProvider,
   ) {}
 
   /**
@@ -599,20 +724,18 @@ export class UsersService {
     limit: number,
     page: number,
   ) {
-    // Test the new config
-    console.log(this.profileConfiguration);
-    console.log(this.profileConfiguration.apiKey);
-
-    return [
+    throw new HttpException(
       {
-        firstName: &#x27;John&#x27;,
-        email: &#x27;john@doe.com&#x27;,
+        status: HttpStatus.MOVED_PERMANENTLY,
+        error: &quot;This endpoint doesn&#x27;t exist&quot;,
+        fileName: &#x27;users.service.ts&#x27;,
+        lineNumber: 71,
       },
+      HttpStatus.MOVED_PERMANENTLY,
       {
-        firstName: &#x27;Alice&#x27;,
-        email: &#x27;alice@doe.com&#x27;,
+        description: &#x27;Occured becaused the endpoint was permanently moved&#x27;,
       },
-    ];
+    );
   }
 
   /**
@@ -622,23 +745,64 @@ export class UsersService {
    * @returns {{ id: number; firstName: string; email: string }} A user object containing their details.
    */
   public async findOneById(id: number) {
-    return await this.usersRepository.findOneBy({
-      id,
-    });
+    let user &#x3D; undefined;
+
+    try {
+      user &#x3D; await this.usersRepository.findOneBy({ id });
+    } catch (error) {
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
+      );
+    }
+
+    /**
+     * Handle if user does not exist
+     */
+    if (!user) {
+      throw new NotFoundException(&#x27;User not found&#x27;);
+    }
+    return user;
   }
   public async createUser(createUserDto: CreateUserDto) {
-    // Check if email is unique
-    const existingUser &#x3D; await this.usersRepository.findOne({
-      where: { email: createUserDto.email },
-    });
+    let existingUser &#x3D; undefined;
+    try {
+      existingUser &#x3D; await this.usersRepository.findOne({
+        where: { email: createUserDto.email },
+      });
+    } catch (error) {
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
+      );
+    }
     // Handle exception
 
+    if (existingUser) {
+      throw new BadRequestException(&#x27;The user already exists.&#x27;);
+    }
     // Create a new user
     let newUser &#x3D; this.usersRepository.create(createUserDto);
 
-    newUser &#x3D; await this.usersRepository.save(newUser);
+    try {
+      newUser &#x3D; await this.usersRepository.save(newUser);
+    } catch (error) {
+      throw new RequestTimeoutException(
+        &#x27;Unable to process your request at the moment. Please try again later&#x27;,
+        {
+          description: &#x27;Error connecting to the database&#x27;,
+        },
+      );
+    }
 
     return newUser;
+  }
+  public async createMany(createManyUsersDto: CreateManyUsersDto) {
+    return await this.usersCreateManyProvider.createMany(createManyUsersDto);
   }
 }
 </code></pre>

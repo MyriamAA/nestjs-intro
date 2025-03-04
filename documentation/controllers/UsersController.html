@@ -150,7 +150,21 @@
                             <li>
                                     <span class="modifier"></span>
                                     <span class="modifier">Public</span>
+                                <a href="#createManyUsers" >createManyUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
                                 <a href="#createUsers" >createUsers</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#getUserById" >getUserById</a>
                             </li>
                             <li>
                                     <span class="modifier"></span>
@@ -187,6 +201,93 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="createManyUsers"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>createManyUsers</b></span>
+                        <a href="#createManyUsers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createManyUsers(createManyUsersDto: <a href="../classes/CreateManyUsersDto.html" target="_self">CreateManyUsersDto</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Post(&#x27;create-many&#x27;)<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="116"
+                                    class="link-to-prism">src/users/users.controller.ts:116</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Creates many user.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>createManyUsersDto</td>
+                                            <td>
+                                                            <code><a href="../classes/CreateManyUsersDto.html" target="_self" >CreateManyUsersDto</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The new users.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The created user.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="createUsers"></a>
                     <span class="name">
                             <span class="modifier"></span>
@@ -213,14 +314,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/users/users.controller.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/users/users.controller.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Creates a new user.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -231,6 +334,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -245,6 +349,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The data to create a new user.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -254,7 +364,99 @@
 
                         </div>
                             <div class="io-description">
+                                <p>The created user.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUserById"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>getUserById</b></span>
+                        <a href="#getUserById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getUserById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get()<br />@ApiOperation({summary: &#x27;Fetch a single user by ID&#x27;})<br />@ApiQuery({name: &#x27;id&#x27;, type: &#x27;string&#x27;, required: true, description: &#x27;The ID of the user&#x27;})<br />@ApiResponse({status: 200, description: &#x27;Returns the user details&#x27;})<br />@ApiResponse({status: 404, description: &#x27;User not found&#x27;})<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/users/users.controller.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a user by ID from query parameter (e.g., <code>id=5</code>).</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
                                 
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>The ID of the user to fetch.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>The user details.</p>
+
                             </div>
                 </td>
             </tr>
@@ -294,14 +496,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/users/users.controller.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/users/users.controller.ts:86</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retrieves a list of users with pagination.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -395,14 +599,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/users/users.controller.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="126"
+                                    class="link-to-prism">src/users/users.controller.ts:126</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Patches user information.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -413,6 +619,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -427,6 +634,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>The data to update the user.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -436,7 +649,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>The updated user data.</p>
+
                             </div>
                 </td>
             </tr>
@@ -446,10 +660,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">/* eslint-disable @typescript-eslint/no-unused-vars */
-import {
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Body,
-  Headers,
   Controller,
   Get,
   Param,
@@ -457,7 +669,6 @@ import {
   Query,
   ParseIntPipe,
   DefaultValuePipe,
-  ValidationPipe,
   Patch,
 } from &#x27;@nestjs/common&#x27;;
 import { CreateUserDto } from &#x27;./dtos/create-user.dto&#x27;;
@@ -465,15 +676,51 @@ import { GetUsersParamDto } from &#x27;./dtos/get-users-param.dto&#x27;;
 import { PatchUserDto } from &#x27;./dtos/patch-user.dto&#x27;;
 import { UsersService } from &#x27;./providers/users.service&#x27;;
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
+import { CreateManyUsersDto } from &#x27;./dtos/create-many-users.dto&#x27;;
 
 // To make parameters optional, use the ? operator
 @Controller(&#x27;users&#x27;)
 @ApiTags(&#x27;Users&#x27;)
 export class UsersController {
   constructor(
-    // Injecting user service
+    /**
+     * Injecting user service
+     */
     private readonly usersService: UsersService,
   ) {}
+
+  /**
+   * Retrieves a user by ID from query parameter (e.g., &#x60;id&#x3D;5&#x60;).
+   * @param id - The ID of the user to fetch.
+   * @returns The user details.
+   */
+  @Get()
+  @ApiOperation({ summary: &#x27;Fetch a single user by ID&#x27; })
+  @ApiQuery({
+    name: &#x27;id&#x27;,
+    type: &#x27;string&#x27;,
+    required: true,
+    description: &#x27;The ID of the user&#x27;,
+  })
+  @ApiResponse({
+    status: 200,
+    description: &#x27;Returns the user details&#x27;,
+  })
+  @ApiResponse({
+    status: 404,
+    description: &#x27;User not found&#x27;,
+  })
+  public getUserById(@Query(&#x27;id&#x27;) id: string) {
+    const userId &#x3D; parseInt(id, 10);
+    if (isNaN(userId)) {
+      return { error: &#x27;Invalid ID format&#x27; };
+    }
+    return this.usersService.findOneById(userId);
+  }
+
+  /**
+   * Retrieves a list of users with pagination.
+   */
   @Get(&#x27;/:id?&#x27;)
   @ApiOperation({
     summary: &#x27;Fetches a list of registered users on the application&#x27;,
@@ -506,6 +753,11 @@ export class UsersController {
     return this.usersService.findAll(getUserParamDto, limit, page);
   }
 
+  /**
+   * Creates a new user.
+   * @param createUserDto - The data to create a new user.
+   * @returns The created user.
+   */
   @Post()
   public createUsers(
     // Without the global validation
@@ -516,6 +768,22 @@ export class UsersController {
   ) {
     return this.usersService.createUser(createUserDto);
   }
+
+  /**
+   * Creates many user.
+   * @param createManyUsersDto - The new users.
+   * @returns The created user.
+   */
+  @Post(&#x27;create-many&#x27;)
+  public createManyUsers(@Body() createManyUsersDto: CreateManyUsersDto) {
+    return this.usersService.createMany(createManyUsersDto);
+  }
+
+  /**
+   * Patches user information.
+   * @param patchUserDto - The data to update the user.
+   * @returns The updated user data.
+   */
   @Patch()
   public patchUser(@Body() patchUserDto: PatchUserDto) {
     return patchUserDto;

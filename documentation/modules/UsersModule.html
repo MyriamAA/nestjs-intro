@@ -122,45 +122,57 @@
 <text text-anchor="start" x="429.73" y="-15.4" font-family="Times-12" font-size="14.00"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_UsersModule</title>
-<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="170,-70 170,-268 326,-268 326,-70 170,-70"/>
+<polygon fill="none" stroke="black" stroke-dasharray="1,5" points="47,-70 47,-268 449,-268 449,-70 47,-70"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_UsersModule_providers</title>
-<polygon fill="none" stroke="black" points="178,-78 178,-130 318,-130 318,-78 178,-78"/>
+<polygon fill="none" stroke="black" points="55,-78 55,-130 441,-130 441,-78 55,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_UsersModule_exports</title>
-<polygon fill="none" stroke="black" points="193,-208 193,-260 303,-260 303,-208 193,-208"/>
+<polygon fill="none" stroke="black" points="167,-208 167,-260 277,-260 277,-208 167,-208"/>
 </g>
 <!-- UsersService  -->
 <g id="node1" class="node">
 <title>UsersService </title>
-<polygon fill="#fb8072" stroke="black" points="294.85,-252 201.15,-252 201.15,-216 294.85,-216 294.85,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00">UsersService </text>
+<polygon fill="#fb8072" stroke="black" points="268.85,-252 175.15,-252 175.15,-216 268.85,-216 268.85,-252"/>
+<text text-anchor="middle" x="222" y="-229.8" font-family="Times,serif" font-size="14.00">UsersService </text>
 </g>
 <!-- UsersModule -->
 <g id="node2" class="node">
 <title>UsersModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="293.92,-187 290.92,-191 269.92,-191 266.92,-187 202.08,-187 202.08,-151 293.92,-151 293.92,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00">UsersModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="267.92,-187 264.92,-191 243.92,-191 240.92,-187 176.08,-187 176.08,-151 267.92,-151 267.92,-187"/>
+<text text-anchor="middle" x="222" y="-164.8" font-family="Times,serif" font-size="14.00">UsersModule</text>
 </g>
 <!-- UsersModule&#45;&gt;UsersService  -->
 <g id="edge1" class="edge">
 <title>UsersModule&#45;&gt;UsersService </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M248,-187.11C248,-187.11 248,-205.99 248,-205.99"/>
-<polygon fill="black" stroke="black" points="244.5,-205.99 248,-215.99 251.5,-205.99 244.5,-205.99"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M222,-187.11C222,-187.11 222,-205.99 222,-205.99"/>
+<polygon fill="black" stroke="black" points="218.5,-205.99 222,-215.99 225.5,-205.99 218.5,-205.99"/>
+</g>
+<!-- UsersCreateManyProvider -->
+<g id="node3" class="node">
+<title>UsersCreateManyProvider</title>
+<ellipse fill="#fdb462" stroke="black" cx="319" cy="-104" rx="114" ry="18"/>
+<text text-anchor="middle" x="319" y="-99.8" font-family="Times,serif" font-size="14.00">UsersCreateManyProvider</text>
+</g>
+<!-- UsersCreateManyProvider&#45;&gt;UsersModule -->
+<g id="edge2" class="edge">
+<title>UsersCreateManyProvider&#45;&gt;UsersModule</title>
+<path fill="none" stroke="black" d="M236.35,-116.53C236.35,-116.53 236.35,-140.85 236.35,-140.85"/>
+<polygon fill="black" stroke="black" points="232.85,-140.85 236.35,-150.85 239.85,-140.85 232.85,-140.85"/>
 </g>
 <!-- UsersService -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>UsersService</title>
-<ellipse fill="#fdb462" stroke="black" cx="248" cy="-104" rx="61.95" ry="18"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00">UsersService</text>
+<ellipse fill="#fdb462" stroke="black" cx="125" cy="-104" rx="61.95" ry="18"/>
+<text text-anchor="middle" x="125" y="-99.8" font-family="Times,serif" font-size="14.00">UsersService</text>
 </g>
 <!-- UsersService&#45;&gt;UsersModule -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>UsersService&#45;&gt;UsersModule</title>
-<path fill="none" stroke="black" d="M248,-122.11C248,-122.11 248,-140.99 248,-140.99"/>
-<polygon fill="black" stroke="black" points="244.5,-140.99 248,-150.99 251.5,-140.99 244.5,-140.99"/>
+<path fill="none" stroke="black" d="M181.63,-111.46C181.63,-111.46 181.63,-140.84 181.63,-140.84"/>
+<polygon fill="black" stroke="black" points="178.13,-140.84 181.63,-150.84 185.13,-140.84 178.13,-140.84"/>
 </g>
 </g>
 </svg>
@@ -212,6 +224,9 @@
                             title="Official documentation about module providers"><span class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
+                            <a href="../injectables/UsersCreateManyProvider.html">UsersCreateManyProvider</a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="../injectables/UsersService.html">UsersService</a>
                         </li>
                     </ul>
@@ -251,12 +266,13 @@ import { AuthModule } from &#x27;src/auth/auth.module&#x27;;
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { User } from &#x27;./user.entity&#x27;;
 import { ConfigModule } from &#x27;@nestjs/config&#x27;;
+import { UsersCreateManyProvider } from &#x27;./providers/users-create-many.provider&#x27;;
 import profileConfig from &#x27;./config/profile.config&#x27;;
 
 // We can only export providers, never controllers
 @Module({
   controllers: [UsersController],
-  providers: [UsersService],
+  providers: [UsersService, UsersCreateManyProvider],
   exports: [UsersService],
   // imports: [AuthModule], will cause a circular dependency
   imports: [
