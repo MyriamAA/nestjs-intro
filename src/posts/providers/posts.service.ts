@@ -14,6 +14,7 @@ import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { TagsService } from 'src/tags/providers/tags.service';
 import { PatchPostDto } from '../dto/patch-post.dto';
 import { GetPostsDto } from '../dto/get-posts.dto';
+import { PaginationProvider } from 'src/common/pagination/providers/pagination.provider';
 
 /**
  * Service responsible for handling post-related operations.
@@ -26,6 +27,8 @@ export class PostsService {
    * @param postsRepository Repository for managing Post entities.
    * @param metaOptionsRepository Repository for managing MetaOption entities.
    * @param tagsService Service for handling tag-related operations.
+  * @param paginationProvider Service for handling pagination operations.
+
    */
   constructor(
     private readonly usersService: UsersService,
@@ -37,6 +40,8 @@ export class PostsService {
     private readonly metaOptionsRepository: Repository<MetaOption>,
 
     private readonly tagsService: TagsService,
+
+    private readonly paginationProvider: PaginationProvider,
   ) {}
 
   /**
@@ -45,12 +50,13 @@ export class PostsService {
    * @returns A list of posts with related meta options.
    */
   public async findAll(postQuery: GetPostsDto, userId: string) {
-    return await this.postsRepository.find({
-      relations: { metaOptions: true },
-
-      skip: (postQuery.page - 1) * postQuery.limit,
-      take: postQuery.limit,
-    });
+    return await this.paginationProvider.paginateQuery(
+      {
+        limit: postQuery.limit,
+        page: postQuery.page,
+      },
+      this.postsRepository,
+    );
 
     // Get meta options along with the posts
     // return await this.postsRepository.find({
