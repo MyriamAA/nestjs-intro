@@ -251,6 +251,14 @@
 
 
 
+        <p class="comment">
+            <h3>Description</h3>
+        </p>
+        <p class="comment">
+            <p>The main module of the application, which imports other feature modules
+and sets up necessary configurations and database connections.</p>
+
+        </p>
 
 
         <div class="container-fluid module">
@@ -314,24 +322,58 @@ import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { TagsModule } from &#x27;./tags/tags.module&#x27;;
 import { MetaOptionsModule } from &#x27;./meta-options/meta-options.module&#x27;;
 import { ConfigModule, ConfigService } from &#x27;@nestjs/config&#x27;;
-import appConfig from &#x27;./config/app.config&#x27;; // Since it&#x27;s imported as a default
+import appConfig from &#x27;./config/app.config&#x27;; // Importing the default app configuration
 import databaseConfig from &#x27;./config/database.config&#x27;;
 import environmentValidation from &#x27;./config/environment.validation&#x27;;
 
+/**
+ * The AppModule is the root module of the NestJS application.
+ * It is responsible for bootstrapping and organizing all the other modules.
+ * It includes various modules such as Users, Posts, Auth, Tags, and MetaOptions.
+ * It also sets up configuration and database connections.
+ */
 const ENV &#x3D; process.env.NODE_ENV;
 
 // Run this in cmd pg_ctl start -D &quot;C:\users\mfabouatmeh\Desktop\CodesDar\more\Postgre\data&quot;
+
+/**
+ * The main module of the application, which imports other feature modules
+ * and sets up necessary configurations and database connections.
+ *
+ * @module AppModule
+ */
 @Module({
   imports: [
+    /**
+     * UsersModule: Provides user-related functionality such as user management.
+     */
     UsersModule,
+
+    /**
+     * PostsModule: Handles all functionality related to posts.
+     */
     PostsModule,
+
+    /**
+     * AuthModule: Handles authentication logic, such as login and token generation.
+     */
     AuthModule,
+
+    /**
+     * ConfigModule: Loads environment variables and application-specific configurations.
+     * It also validates the configurations using environmentValidation schema.
+     */
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: !ENV ? &#x27;.env&#x27; : &#x60;.env.${ENV}&#x60;,
       load: [appConfig, databaseConfig],
       validationSchema: environmentValidation,
     }),
+
+    /**
+     * TypeOrmModule: Configures PostgreSQL database connection using TypeORM.
+     * Database configurations are dynamically fetched from ConfigService.
+     */
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule], // Makes ConfigService available
       inject: [ConfigService],
@@ -347,15 +389,31 @@ const ENV &#x3D; process.env.NODE_ENV;
         database: configService.get(&#x27;database.name&#x27;),
       }),
     }),
+
+    /**
+     * TagsModule: Handles the management of tags for posts or other entities.
+     */
     TagsModule,
+
+    /**
+     * MetaOptionsModule: Deals with metadata options for various entities in the app.
+     */
     MetaOptionsModule,
   ],
+
+  /**
+   * The controllers that are responsible for handling incoming requests.
+   * Here, the main controller is AppController.
+   */
   controllers: [AppController],
+
+  /**
+   * The providers that are used to provide business logic and service-related functionality.
+   * In this case, AppService is used to return the &#x27;Hello World&#x27; string.
+   */
   providers: [AppService],
 })
 export class AppModule {}
-
-//npx prettier --write .
 </code></pre>
     </div>
 </div>

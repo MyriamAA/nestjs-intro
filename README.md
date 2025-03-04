@@ -199,3 +199,11 @@ $ npx nest generate pr users/providers/users-create=many.provider --flat --no-sp
 ```bash
 $ npx prettier --write .
 ```
+
+## Start the db
+
+Run this in cmd
+
+```bash
+$ pg_ctl start -D "C:\users\mfabouatmeh\Desktop\CodesDar\more\Postgre\data"
+```

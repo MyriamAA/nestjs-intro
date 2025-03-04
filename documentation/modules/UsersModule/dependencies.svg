@@ -24,13 +24,13 @@
 <title>cluster_UsersModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="47,-70 47,-268 449,-268 449,-70 47,-70"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_UsersModule_providers</title>
-<polygon fill="none" stroke="black" points="55,-78 55,-130 441,-130 441,-78 55,-78"/>
-</g>
 <g id="clust4" class="cluster">
 <title>cluster_UsersModule_exports</title>
 <polygon fill="none" stroke="black" points="167,-208 167,-260 277,-260 277,-208 167,-208"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_UsersModule_providers</title>
+<polygon fill="none" stroke="black" points="55,-78 55,-130 441,-130 441,-78 55,-78"/>
 </g>
 <!-- UsersService  -->
 <g id="node1" class="node">

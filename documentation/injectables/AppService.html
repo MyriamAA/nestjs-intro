@@ -126,6 +126,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AppService is a service that handles business logic related to the application.
+Currently, it provides a simple &#39;Hello World&#39; message.</p>
+
+            </p>
 
 
 
@@ -183,19 +191,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="5"
-                                    class="link-to-prism">src/app.service.ts:5</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="17"
+                                    class="link-to-prism">src/app.service.ts:17</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Returns a &#39;Hello World!&#39; string.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>string - A simple greeting message.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -208,8 +222,20 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 
+/**
+ * AppService is a service that handles business logic related to the application.
+ * Currently, it provides a simple &#x27;Hello World&#x27; message.
+ *
+ * @module AppService
+ */
 @Injectable()
 export class AppService {
+  /**
+   * Returns a &#x27;Hello World!&#x27; string.
+   *
+   * @returns string - A simple greeting message.
+   * @example &#x27;Hello World!&#x27;
+   */
   getHello(): string {
     return &#x27;Hello World!&#x27;;
   }

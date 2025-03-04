@@ -124,21 +124,138 @@
 
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>AppController is the controller responsible for handling incoming HTTP requests.
+It uses AppService to return the &quot;Hello World!&quot; string.</p>
+
+            </p>
+
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#getHello" >getHello</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
 
 
-    </div>
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHello"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>getHello</b></span>
+                        <a href="#getHello"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHello()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get()<br /></code>
+                </td>
+            </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app.controller.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Handles the GET request for the root endpoint (&#39;/&#39;).
+It uses the AppService to get the &#39;Hello World!&#39; string and return it to the client.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html"></code></pre></div></div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>string - The greeting message.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Controller, Get } from &#x27;@nestjs/common&#x27;;
 import { AppService } from &#x27;./app.service&#x27;;
 
+/**
+ * AppController is the controller responsible for handling incoming HTTP requests.
+ * It uses AppService to return the &quot;Hello World!&quot; string.
+ *
+ * @module AppController
+ */
 @Controller()
 export class AppController {
+  /**
+   * Injects the AppService to access its methods and return data.
+   *
+   * @param appService - Instance of AppService to handle the business logic.
+   */
   constructor(private readonly appService: AppService) {}
+
+  /**
+   * Handles the GET request for the root endpoint (&#x27;/&#x27;).
+   * It uses the AppService to get the &#x27;Hello World!&#x27; string and return it to the client.
+   *
+   * @returns string - The greeting message.
+   * @example &#x27;Hello World!&#x27;
+   */
+  @Get()
+  getHello(): string {
+    return this.appService.getHello();
+  }
 }
 </code></pre>
     </div>
