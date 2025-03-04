@@ -207,3 +207,12 @@ Run this in cmd
 ```bash
 $ pg_ctl start -D "C:\users\mfabouatmeh\Desktop\CodesDar\more\Postgre\data"
 ```
+
+# Pagination
+
+The _posts.service.ts_ **findAll()** method:
+We can pass in the skip and take.
+
+The _skip_ is the number of post entries that you want to skip from the first page. So if your first page has ten posts in the second page, you will have this post starting from post number 11 to post number 20.
+
+So basically you're skipping ten posts and _take_ is the number of posts that you want to return in one query.

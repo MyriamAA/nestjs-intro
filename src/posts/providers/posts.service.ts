@@ -13,6 +13,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MetaOption } from 'src/meta-options/meta-option.entity';
 import { TagsService } from 'src/tags/providers/tags.service';
 import { PatchPostDto } from '../dto/patch-post.dto';
+import { GetPostsDto } from '../dto/get-posts.dto';
 
 /**
  * Service responsible for handling post-related operations.
@@ -43,9 +44,12 @@ export class PostsService {
    * @param userId The ID of the user requesting the posts.
    * @returns A list of posts with related meta options.
    */
-  public async findAll(userId: string) {
+  public async findAll(postQuery: GetPostsDto, userId: string) {
     return await this.postsRepository.find({
       relations: { metaOptions: true },
+
+      skip: (postQuery.page - 1) * postQuery.limit,
+      take: postQuery.limit,
     });
 
     // Get meta options along with the posts

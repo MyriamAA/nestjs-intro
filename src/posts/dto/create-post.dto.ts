@@ -17,7 +17,7 @@ import { PostType } from '../enums/post-type.enum';
 import { PostStatus } from '../enums/post-status.enum';
 import { CreatePostMetaOptionsDto } from '../../meta-options/dtos/create-post-meta-options.dto';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 
 /**
  * DTO for creating a new blog post.
@@ -118,7 +118,7 @@ export class CreatePostDto {
     description: 'The date on which the post is published',
     example: '2024-03-16T07:46:32+0000',
   })
-  @IsISO8601()
+  @Transform(({ value }) => new Date(value))
   @IsOptional()
   publishOn?: Date;
 
