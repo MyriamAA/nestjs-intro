@@ -15,6 +15,7 @@ import { TagsService } from 'src/tags/providers/tags.service';
 import { PatchPostDto } from '../dto/patch-post.dto';
 import { GetPostsDto } from '../dto/get-posts.dto';
 import { PaginationProvider } from 'src/common/pagination/providers/pagination.provider';
+import { Paginated } from 'src/common/pagination/interfaces/paginated.interface';
 
 /**
  * Service responsible for handling post-related operations.
@@ -49,7 +50,10 @@ export class PostsService {
    * @param userId The ID of the user requesting the posts.
    * @returns A list of posts with related meta options.
    */
-  public async findAll(postQuery: GetPostsDto, userId: string) {
+  public async findAll(
+    postQuery: GetPostsDto,
+    userId: string,
+  ): Promise<Paginated<Post>> {
     return await this.paginationProvider.paginateQuery(
       {
         limit: postQuery.limit,
