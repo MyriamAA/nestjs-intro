@@ -19,6 +19,7 @@ import profileConfig from '../config/profile.config';
 import { UsersCreateManyProvider } from './users-create-many.provider';
 import { CreateManyUsersDto } from '../dtos/create-many-users.dto';
 import { CreateUserProvider } from './create-user.provider';
+import { FindOneUserByEmailProvider } from './find-one-user-by-email.provider';
 
 /**
  * Service for managing users.
@@ -33,6 +34,7 @@ export class UsersService {
    * @param dataSource - The database connection source.
    * @param usersCreateManyProvider - Service to handle bulk user creation.
    * @param createUserProvider - Service to handle password hashing with user creation.
+   * @param findOneByEmailProvider - Service to find user by email.
 
    */
   constructor(
@@ -49,6 +51,8 @@ export class UsersService {
     private readonly usersCreateManyProvider: UsersCreateManyProvider,
 
     private readonly createUserProvider: CreateUserProvider,
+
+    private readonly findOneByEmailProvider: FindOneUserByEmailProvider,
   ) {}
 
   /**
@@ -115,5 +119,9 @@ export class UsersService {
    */
   public async createMany(createManyUsersDto: CreateManyUsersDto) {
     return await this.usersCreateManyProvider.createMany(createManyUsersDto);
+  }
+
+  public async findOneByEmail(email: string) {
+    return await this.findOneByEmailProvider.findOneByEmail(email);
   }
 }

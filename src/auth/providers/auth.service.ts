@@ -24,23 +24,15 @@ export class AuthService {
    * It checks if the user exists, verifies the password, and generates a token for the user.
    * If the user is not found or the password is incorrect, an error is thrown.
    *
-   * @param email The email of the user attempting to log in.
-   * @param password The password of the user attempting to log in.
    * @returns string A token generated for the logged-in user (typically a JWT token).
    * @throws Error If the user is not found or the password is incorrect.
    * @example 'SAMPLE_TOKEN' - A sample token string returned upon successful login.
    */
-  public login(email: string, password: string) {
-    // Simulate user finding logic (mocked for demonstration)
-    const user = this.usersService.findOneById(1234);
-
-    if (!user) {
-      throw new Error('User not found');
-    }
-
-    // Additional password check can be added here
-    // For now, returning a mock token for successful login
-    return 'SAMPLE_TOKEN';
+  public signIn() {
+    // Find the user using email ID
+    // Throw an exception if user's not found
+    // Compare password to the hash
+    // Send confirmation
   }
 
   /**

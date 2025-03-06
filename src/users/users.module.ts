@@ -10,6 +10,7 @@ import { CreateUserProvider } from './providers/create-user.provider';
 import profileConfig from './config/profile.config';
 import { BcryptProvider } from 'src/auth/providers/bcrypt.provider';
 import { HashingProvider } from 'src/auth/providers/hashing.provider';
+import { FindOneUserByEmailProvider } from './providers/find-one-user-by-email.provider';
 
 // We can only export providers, never controllers
 @Module({
@@ -23,6 +24,7 @@ import { HashingProvider } from 'src/auth/providers/hashing.provider';
       provide: HashingProvider, // Tell NestJS to use BcryptProvider when HashingProvider is requested
       useClass: BcryptProvider,
     },
+    FindOneUserByEmailProvider,
   ],
   exports: [UsersService],
   // imports: [AuthModule], will cause a circular dependency
