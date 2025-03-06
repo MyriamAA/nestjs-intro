@@ -1,5 +1,7 @@
 import { Injectable, forwardRef, Inject } from '@nestjs/common';
 import { UsersService } from 'src/users/providers/users.service';
+import { SignInProvider } from './sign-in.provider';
+import { SignInDto } from '../dtos/signin.dto';
 // nest generate service auth/providers/auth --flat  --no-spec
 
 /**
@@ -17,6 +19,11 @@ export class AuthService {
     // forwardRef is used to avoid circular dependency issues.
     @Inject(forwardRef(() => UsersService))
     private readonly usersService: UsersService,
+
+    /**
+     * Inject signInProvider
+     */
+    private readonly signInProvider: SignInProvider,
   ) {}
 
   /**
@@ -28,11 +35,8 @@ export class AuthService {
    * @throws Error If the user is not found or the password is incorrect.
    * @example 'SAMPLE_TOKEN' - A sample token string returned upon successful login.
    */
-  public signIn() {
-    // Find the user using email ID
-    // Throw an exception if user's not found
-    // Compare password to the hash
-    // Send confirmation
+  public async signIn(signInDto: SignInDto) {
+    return await this.signInProvider.signIn(signInDto);
   }
 
   /**
