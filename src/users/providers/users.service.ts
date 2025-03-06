@@ -18,6 +18,7 @@ import { ConfigType } from '@nestjs/config';
 import profileConfig from '../config/profile.config';
 import { UsersCreateManyProvider } from './users-create-many.provider';
 import { CreateManyUsersDto } from '../dtos/create-many-users.dto';
+import { CreateUserProvider } from './create-user.provider';
 
 /**
  * Service for managing users.
@@ -31,6 +32,8 @@ export class UsersService {
    * @param profileConfiguration - Injected profile configuration.
    * @param dataSource - The database connection source.
    * @param usersCreateManyProvider - Service to handle bulk user creation.
+   * @param createUserProvider - Service to handle password hashing with user creation.
+
    */
   constructor(
     @Inject(forwardRef(() => AuthService))
@@ -44,6 +47,8 @@ export class UsersService {
 
     private readonly dataSource: DataSource,
     private readonly usersCreateManyProvider: UsersCreateManyProvider,
+
+    private readonly createUserProvider: CreateUserProvider,
   ) {}
 
   /**
@@ -100,28 +105,7 @@ export class UsersService {
    * @throws {BadRequestException} If the user already exists.
    */
   public async createUser(createUserDto: CreateUserDto) {
-    let existingUser;
-    try {
-      existingUser = await this.usersRepository.findOne({
-        where: { email: createUserDto.email },
-      });
-    } catch (error) {
-      throw new RequestTimeoutException('Database connection error');
-    }
-
-    if (existingUser) {
-      throw new BadRequestException('User already exists.');
-    }
-
-    let newUser = this.usersRepository.create(createUserDto);
-
-    try {
-      newUser = await this.usersRepository.save(newUser);
-    } catch (error) {
-      throw new RequestTimeoutException('Database connection error');
-    }
-
-    return newUser;
+    return await this.createUserProvider.createUser(createUserDto);
   }
 
   /**

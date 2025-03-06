@@ -7,7 +7,13 @@ import { BcryptProvider } from './providers/bcrypt.provider';
 // nest generate module auth
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, HashingProvider, BcryptProvider],
+  providers: [
+    AuthService,
+    {
+      provide: HashingProvider,
+      useClass: BcryptProvider,
+    },
+  ],
   // imports: [UsersModule], will cause a circular dependency
   imports: [forwardRef(() => UsersModule)],
   exports: [AuthService],
