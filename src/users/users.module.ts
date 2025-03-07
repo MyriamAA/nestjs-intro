@@ -11,6 +11,8 @@ import profileConfig from './config/profile.config';
 import { BcryptProvider } from 'src/auth/providers/bcrypt.provider';
 import { HashingProvider } from 'src/auth/providers/hashing.provider';
 import { FindOneUserByEmailProvider } from './providers/find-one-user-by-email.provider';
+import { JwtModule } from '@nestjs/jwt';
+import jwtConfig from 'src/auth/config/jwt.config';
 
 // We can only export providers, never controllers
 @Module({
@@ -32,6 +34,8 @@ import { FindOneUserByEmailProvider } from './providers/find-one-user-by-email.p
     forwardRef(() => AuthModule),
     TypeOrmModule.forFeature([User]),
     ConfigModule.forFeature(profileConfig),
+    ConfigModule.forFeature(jwtConfig),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
   ],
 })
 export class UsersModule {}
