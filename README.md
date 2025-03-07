@@ -228,3 +228,7 @@ npx nest g module /common/pagination/pagination --flat --no-spec
 ```bash
 npx nest g pr /common/pagination/prroviders/pagination --flat --no-spec
 ```
+
+# JWT Authentication
+
+Use jwt.io to decode the access token returned by the **signIn()** method in the auth service
