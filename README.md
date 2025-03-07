@@ -231,4 +231,18 @@ npx nest g pr /common/pagination/prroviders/pagination --flat --no-spec
 
 # JWT Authentication
 
+### Configuration file
+
+Located in _jwt.config.ts_, injected in AuthModule to be used in the **signIn()** method in SignInProvider.
+
 Use jwt.io to decode the access token returned by the **signIn()** method in the auth service
+
+# Guards
+
+Approve or disapprove a request
+
+## Create a guard
+
+```bash
+$ npx nest g guard /auth/guards/access-token --no-spec
+```
