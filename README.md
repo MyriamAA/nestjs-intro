@@ -197,7 +197,7 @@ $ npx nest generate pr users/providers/users-create=many.provider --flat --no-sp
 ## Prettier
 
 ```bash
-$ npx prettier --write .
+$ d
 ```
 
 ## Start the db
@@ -245,4 +245,12 @@ Approve or disapprove a request
 
 ```bash
 $ npx nest g guard /auth/guards/access-token --no-spec
+```
+
+# Decorators
+
+## Create a decorator
+
+```bash
+$ npx nest g d /auth/decorators/auth --flat --no-spec
 ```

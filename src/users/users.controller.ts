@@ -93,7 +93,6 @@ export class UsersController {
    * @returns The created user.
    */
   @Post()
-  @Auth(AuthType.None)
   public createUser(
     // Without the global validation
     // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
@@ -109,7 +108,6 @@ export class UsersController {
    * @param createManyUsersDto - The data to create multiple users.
    * @returns The created users.
    */
-  @UseGuards(AccessTokenGuard)
   @Post('create-many')
   public createManyUsers(@Body() createManyUsersDto: CreateManyUsersDto) {
     return this.usersService.createMany(createManyUsersDto);
