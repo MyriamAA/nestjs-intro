@@ -12,6 +12,10 @@ import { PaginationModule } from './common/pagination/pagination.module';
 import appConfig from './config/app.config'; // Importing the default app configuration
 import databaseConfig from './config/database.config';
 import environmentValidation from './config/environment.validation';
+import jwtConfig from './auth/config/jwt.config';
+import { JwtModule } from '@nestjs/jwt';
+import { APP_GUARD } from '@nestjs/core';
+import { AccessTokenGuard } from './auth/guards/access-token/access-token.guard';
 
 /**
  * The AppModule is the root module of the NestJS application.
@@ -76,7 +80,8 @@ const ENV = process.env.NODE_ENV;
         database: configService.get('database.name'),
       }),
     }),
-
+    ConfigModule.forFeature(jwtConfig),
+    JwtModule.registerAsync(jwtConfig.asProvider()),
     /**
      * TagsModule: Handles the management of tags for posts or other entities.
      */
@@ -100,6 +105,14 @@ const ENV = process.env.NODE_ENV;
    * The providers that are used to provide business logic and service-related functionality.
    * In this case, AppService is used to return the 'Hello World' string.
    */
-  providers: [AppService],
+  providers: [
+    AppService,
+
+    // All the routes in the app are now protected unless marked as public
+    {
+      provide: APP_GUARD,
+      useClass: AccessTokenGuard,
+    },
+  ],
 })
 export class AppModule {}

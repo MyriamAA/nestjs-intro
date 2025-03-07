@@ -13,6 +13,8 @@ import { HashingProvider } from 'src/auth/providers/hashing.provider';
 import { FindOneUserByEmailProvider } from './providers/find-one-user-by-email.provider';
 import { JwtModule } from '@nestjs/jwt';
 import jwtConfig from 'src/auth/config/jwt.config';
+import { APP_GUARD } from '@nestjs/core';
+import { AccessTokenGuard } from 'src/auth/guards/access-token/access-token.guard';
 
 // We can only export providers, never controllers
 @Module({
@@ -27,6 +29,11 @@ import jwtConfig from 'src/auth/config/jwt.config';
       useClass: BcryptProvider,
     },
     FindOneUserByEmailProvider,
+    // Entire users module is now protected
+    {
+      provide: APP_GUARD,
+      useClass: AccessTokenGuard,
+    },
   ],
   exports: [UsersService],
   // imports: [AuthModule], will cause a circular dependency
