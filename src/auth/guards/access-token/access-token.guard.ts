@@ -44,7 +44,6 @@ export class AccessTokenGuard implements CanActivate {
       );
 
       request[REQUEST_USER_KEY] = payload; // So that we can access the user from the request in any file
-      console.log(payload);
     } catch (error) {
       throw new UnauthorizedException();
     }

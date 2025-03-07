@@ -34,14 +34,14 @@ export class AuthenticationGuard implements CanActivate {
       [context.getHandler(), context.getClass()],
     ) || [AuthenticationGuard.defaultAuthType];
 
-    console.log('Auth Types:', authTypes);
+    // console.log('Auth Types:', authTypes);
 
     // Convert to an array to handle multiple guards
     const guards = authTypes.flatMap((type) =>
       [].concat(this.authTypeGuardMap[type]),
     );
 
-    console.log('Guards:', guards);
+    // console.log('Guards:', guards);
 
     const error = new UnauthorizedException();
 

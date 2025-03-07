@@ -159,17 +159,4 @@ export class CreatePostDto {
   // Creates an instance of the dto
   // All the properties are validated against the dto
   metaOptions?: CreatePostMetaOptionsDto | null;
-
-  /**
-   * The ID of the author creating the post.
-   */
-  @ApiProperty({
-    type: 'integer',
-    required: true,
-    description: 'The ID of the author creating the post',
-    example: 1,
-  })
-  @IsNotEmpty()
-  @IsInt()
-  authorId: number;
 }

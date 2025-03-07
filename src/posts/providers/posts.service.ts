@@ -16,6 +16,8 @@ import { PatchPostDto } from '../dto/patch-post.dto';
 import { GetPostsDto } from '../dto/get-posts.dto';
 import { PaginationProvider } from 'src/common/pagination/providers/pagination.provider';
 import { Paginated } from 'src/common/pagination/interfaces/paginated.interface';
+import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
+import { CreatePostProvider } from './create-post.provider';
 
 /**
  * Service responsible for handling post-related operations.
@@ -28,7 +30,8 @@ export class PostsService {
    * @param postsRepository Repository for managing Post entities.
    * @param metaOptionsRepository Repository for managing MetaOption entities.
    * @param tagsService Service for handling tag-related operations.
-  * @param paginationProvider Service for handling pagination operations.
+   * @param paginationProvider Service for handling pagination operations.
+   * @param createPostProvider Service for handling post operations.
 
    */
   constructor(
@@ -43,6 +46,8 @@ export class PostsService {
     private readonly tagsService: TagsService,
 
     private readonly paginationProvider: PaginationProvider,
+
+    private readonly createPostProvider: CreatePostProvider,
   ) {}
 
   /**
@@ -55,10 +60,7 @@ export class PostsService {
     userId: string,
   ): Promise<Paginated<Post>> {
     return await this.paginationProvider.paginateQuery(
-      {
-        limit: postQuery.limit,
-        page: postQuery.page,
-      },
+      { limit: postQuery.limit, page: postQuery.page },
       this.postsRepository,
     );
 
@@ -75,18 +77,8 @@ export class PostsService {
    * @param createPostDto DTO containing post creation details.
    * @returns The newly created post.
    */
-  public async create(@Body() createPostDto: CreatePostDto) {
-    const author = await this.usersService.findOneById(createPostDto.authorId);
-    const tags = await this.tagsService.findMultipleTags(createPostDto.tags);
-
-    // Use the spread operator to create a shallow copy of createPostDto, meaning a new object is passed to create()
-    const post = this.postsRepository.create({
-      ...createPostDto,
-      author,
-      tags,
-    }); // Only use await for the save method because it returns a promise
-
-    return await this.postsRepository.save(post);
+  public async create(createPostDto: CreatePostDto, user: ActiveUserData) {
+    return await this.createPostProvider.create(createPostDto, user);
   }
 
   /*
@@ -163,6 +155,7 @@ export class PostsService {
       throw new NotFoundException("This post doesn't exist.");
     }
 
+    // Update the properties
     post.title = patchPostDto.title ?? post.title;
     post.content = patchPostDto.content ?? post.content;
     post.status = patchPostDto.status ?? post.status;
@@ -171,13 +164,17 @@ export class PostsService {
     post.featuredImageUrl =
       patchPostDto.featuredImageUrl ?? post.featuredImageUrl;
     post.publishOn = patchPostDto.publishOn ?? post.publishOn;
+
+    // Assign the new tags
     post.tags = tags;
 
+    // Save the post and return
     try {
       await this.postsRepository.save(post);
     } catch (error) {
       throw new RequestTimeoutException(
-        'Unable to process your request at the moment. Please try later',
+        'Unable to process your request at the moment please try later',
+        { description: 'Error connecting to the database' },
       );
     }
     return post;

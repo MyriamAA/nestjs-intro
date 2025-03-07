@@ -20,6 +20,8 @@ import {
 import { CreatePostDto } from './dto/create-post.dto';
 import { PatchPostDto } from './dto/patch-post.dto';
 import { GetPostsDto } from './dto/get-posts.dto';
+import { ActiveUser } from 'src/auth/decorators/active-user.decorator';
+import { ActiveUserData } from 'src/auth/interfaces/active-user-data.interface';
 
 /**
  * Controller for managing posts.
@@ -56,14 +58,19 @@ export class PostsController {
   /**
    * Creates a new blog post.
    * @param createPostDto - The data for the new post.
+   * @param user - The user creating the post.
    * @returns The created post.
    */
   @ApiOperation({ summary: 'Creates a new blog post' })
   @ApiResponse({ status: 201, description: 'Post created successfully' })
   @ApiResponse({ status: 400, description: 'Invalid request data' })
   @Post()
-  public createPost(@Body() createPostDto: CreatePostDto) {
-    return this.postsService.create(createPostDto);
+  public createPost(
+    @Body() createPostDto: CreatePostDto,
+    @ActiveUser() user: ActiveUserData,
+  ) {
+    console.log(user);
+    return this.postsService.create(createPostDto, user);
   }
 
   /**
