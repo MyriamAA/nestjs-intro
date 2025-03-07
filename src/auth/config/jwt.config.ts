@@ -1,7 +1,7 @@
 import { registerAs } from '@nestjs/config';
 
-// frst param is the interface
-//second is the config obj
+// first param is the interface
+// second is the config obj
 export default registerAs('jwt', () => {
   return {
     secret: process.env.JWT_SECRET,
