@@ -17,6 +17,8 @@ import { UsersService } from './providers/users.service';
 import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateManyUsersDto } from './dtos/create-many-users.dto';
 import { AccessTokenGuard } from 'src/auth/guards/access-token/access-token.guard';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { AuthType } from 'src/auth/enums/auth-type.enum';
 
 /**
  * Controller for handling user-related requests.
@@ -91,6 +93,7 @@ export class UsersController {
    * @returns The created user.
    */
   @Post()
+  @Auth(AuthType.None)
   public createUser(
     // Without the global validation
     // @Body(new ValidationPipe()) createUserDto: CreateUserDto,
