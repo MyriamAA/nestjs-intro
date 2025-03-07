@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './providers/auth.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { SignInDto } from './dtos/signin.dto';
@@ -16,6 +16,7 @@ export class AuthController {
   ) {}
 
   @Post('sign-in')
+  @HttpCode(HttpStatus.OK) // To get a 200 OK instead of 201
   public async signIn(@Body() signInDto: SignInDto) {
     return await this.authService.signIn(signInDto);
   }
