@@ -59,3 +59,6 @@ async function bootstrap() {
 
 // Call the bootstrap function to initialize the app
 bootstrap();
+
+// add this in .env.development
+// JWT_REFRESH_TOKEN_TTL = 86400;
