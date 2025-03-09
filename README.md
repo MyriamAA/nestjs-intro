@@ -254,3 +254,38 @@ $ npx nest g guard /auth/guards/access-token --no-spec
 ```bash
 $ npx nest g d /auth/decorators/auth --flat --no-spec
 ```
+
+# Google Authentication
+
+## Create the project
+
+### Go to the API section
+
+Create the project called NestJS Backend. Define it as a web application.
+
+### Add the urls
+
+Choose the URLs where the frontend app will be running on.
+
+### Get the client id and secret from the Google Console
+
+URL of the backend: *https://console.cloud.google.com/auth/clients?highlightClient=766114207727-qlm98cm73q9u3111li38qbjm0i6q60mm.apps.googleusercontent.com&inv=1&invt=AbrmQg&project=nestjs-backend-453220*
+
+## Incorporate into the project
+
+### Add the environment variables in the env files.
+
+### Create a controller
+
+```bash
+$ npx nest g co auth/social/google-authentication --flat --no-spec
+
+```
+
+### Create a service
+
+```bash
+$ npx nest g s auth/social/providers/google-authentication --flat --no-spec
+```
+
+Password becomes an optional parameter if the user logs in using Google authentication.
