@@ -2,6 +2,8 @@ import { Injectable, forwardRef, Inject } from '@nestjs/common';
 import { UsersService } from 'src/users/providers/users.service';
 import { SignInProvider } from './sign-in.provider';
 import { SignInDto } from '../dtos/signin.dto';
+import { RefreshTokenDto } from '../dtos/refresh-token.dto';
+import { RefreshTokensProvider } from './refresh-tokens.provider';
 // nest generate service auth/providers/auth --flat  --no-spec
 
 /**
@@ -24,6 +26,11 @@ export class AuthService {
      * Inject signInProvider
      */
     private readonly signInProvider: SignInProvider,
+
+    /**
+     * Inject refreshTokensProvider
+     */
+    private readonly refreshTokensProvider: RefreshTokensProvider,
   ) {}
 
   /**
@@ -39,15 +46,7 @@ export class AuthService {
     return await this.signInProvider.signIn(signInDto);
   }
 
-  /**
-   * Checks if a user is authenticated.
-   * This is a simplified check that always returns `true`.
-   * In a real-world application, this would verify a JWT token or session.
-   *
-   * @returns boolean `true` indicating the user is authenticated.
-   * @example true
-   */
-  public isAuth(): boolean {
-    return true;
+  public async refreshTokens(refreshTokenDto: RefreshTokenDto) {
+    return await this.refreshTokensProvider.refreshTokens(refreshTokenDto);
   }
 }
