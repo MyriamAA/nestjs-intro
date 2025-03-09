@@ -8,7 +8,8 @@ import { SignInProvider } from './providers/sign-in.provider';
 import { ConfigModule } from '@nestjs/config';
 import jwtConfig from './config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
-import { GenerateTokensProvider } from './providedrs/generate-tokens.provider';
+import { GenerateTokensProvider } from './providers/generate-tokens.provider';
+import { RefreshTokensProvider } from './providers/refresh-tokens.provider';
 // nest generate module auth
 @Module({
   controllers: [AuthController],
@@ -20,6 +21,7 @@ import { GenerateTokensProvider } from './providedrs/generate-tokens.provider';
     },
     SignInProvider,
     GenerateTokensProvider,
+    RefreshTokensProvider,
   ],
   // imports: [UsersModule], will cause a circular dependency
   imports: [
