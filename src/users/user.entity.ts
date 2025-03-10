@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Post } from 'src/posts/post.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -48,6 +49,7 @@ export class User {
   /**
    * The password of the user.
    */
+  @Exclude() // when used with the classserializer, excludes password from the return
   @Column({
     type: 'varchar',
     length: 96,
@@ -62,6 +64,7 @@ export class User {
     type: 'varchar',
     nullable: true,
   })
+  @Exclude()
   googleId?: string;
   /**
    * The list of posts authored by the user.

@@ -9,6 +9,8 @@ import {
   DefaultValuePipe,
   Patch,
   UseGuards,
+  UseInterceptors,
+  ClassSerializerInterceptor,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { GetUsersParamDto } from './dtos/get-users-param.dto';
@@ -92,6 +94,8 @@ export class UsersController {
    * @param createUserDto - Data required to create a user.
    * @returns The created user.
    */
+  @Auth(AuthType.None)
+  @UseInterceptors(ClassSerializerInterceptor)
   @Post()
   public createUser(
     // Without the global validation
