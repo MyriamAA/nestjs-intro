@@ -14,10 +14,11 @@ import databaseConfig from './config/database.config';
 import environmentValidation from './config/environment.validation';
 import jwtConfig from './auth/config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
-import { APP_GUARD } from '@nestjs/core';
+import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import { AccessTokenGuard } from './auth/guards/access-token/access-token.guard';
 import { AuthenticationGuard } from './auth/guards/authentication/authentication.guard';
 import { GoogleAuthenticationService } from './auth/social/providers/google-authentication.service';
+import { DataResponseInterceptor } from './common/interceptors/data-response/data-response.interceptor';
 
 /**
  * The AppModule is the root module of the NestJS application.
@@ -111,6 +112,10 @@ const ENV = process.env.NODE_ENV;
     AppService,
     // All the routes in the app are now protected unless marked as public
     { provide: APP_GUARD, useClass: AuthenticationGuard },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: DataResponseInterceptor,
+    },
     AccessTokenGuard,
     GoogleAuthenticationService,
   ],

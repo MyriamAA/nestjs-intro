@@ -57,8 +57,6 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors();
 
-  // Add global interceptor
-  app.useGlobalInterceptors(new DataResponseInterceptor());
   // Start the application, listening on the specified port (default is 3000)
   await app.listen(process.env.PORT ?? 3000);
 }
