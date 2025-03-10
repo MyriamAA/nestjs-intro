@@ -57,6 +57,7 @@ async function bootstrap() {
 
   // Setup the aws sdk used uploading the files to aws s3 bucket
 
+  // Extra AWS
   const configService = app.get(ConfigService);
 
   config.update({
