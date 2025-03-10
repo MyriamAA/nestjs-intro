@@ -16,6 +16,7 @@ import jwtConfig from 'src/auth/config/jwt.config';
 import { APP_GUARD } from '@nestjs/core';
 import { AccessTokenGuard } from 'src/auth/guards/access-token/access-token.guard';
 import { FindOneByGoogleIdProvider } from './providers/find-one-by-google-id.provider';
+import { CreateGoogleUserProvider } from './providers/create-google-user.provider';
 
 // We can only export providers, never controllers
 @Module({
@@ -31,6 +32,7 @@ import { FindOneByGoogleIdProvider } from './providers/find-one-by-google-id.pro
     },
     FindOneUserByEmailProvider,
     FindOneByGoogleIdProvider,
+    CreateGoogleUserProvider,
   ],
   exports: [UsersService],
   // imports: [AuthModule], will cause a circular dependency
