@@ -289,3 +289,17 @@ $ npx nest g s auth/social/providers/google-authentication --flat --no-spec
 ```
 
 Password becomes an optional parameter if the user logs in using Google authentication.
+
+# Interceptors
+
+## Existing interceptor
+
+Use **@UseInterceptors(ClassSerializerInterceptor)** in _users.controller.ts_ and modify the _user.entity.ts_ to remove password and google id from returned object
+
+## Create our own
+
+```bash
+$ npx nest g interceptor /common/interceptors/data-response --no-spec
+```
+
+The file should have the intercept method since it implements the NestInterceptor interface

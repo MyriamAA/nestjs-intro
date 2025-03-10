@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { DataResponseInterceptor } from './common/interceptors/data-response/data-response.interceptor';
 
 // Use https://jsdoc.app/about-getting-started for more details on how to document (for compodoc)
 
@@ -56,6 +57,8 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors();
 
+  // Add global interceptor
+  app.useGlobalInterceptors(new DataResponseInterceptor());
   // Start the application, listening on the specified port (default is 3000)
   await app.listen(process.env.PORT ?? 3000);
 }
