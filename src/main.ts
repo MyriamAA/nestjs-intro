@@ -3,7 +3,8 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { DataResponseInterceptor } from './common/interceptors/data-response/data-response.interceptor';
-
+import { config } from 'aws-sdk';
+import { ConfigService } from '@nestjs/config';
 // Use https://jsdoc.app/about-getting-started for more details on how to document (for compodoc)
 
 /**
@@ -30,7 +31,7 @@ async function bootstrap() {
   // @Type(() => Number)
 
   // Swagger API documentation configuration
-  const config = new DocumentBuilder()
+  const swaggerConfig = new DocumentBuilder()
     .setTitle('NestJS Masterclass - Blog app API') // API title
     .setDescription('Use the base API URL as http://localhost:3000') // API description
     .setTermsOfService('http://localhost:3000/terms-of-service') // Link to Terms of Service
@@ -45,7 +46,7 @@ async function bootstrap() {
     .build(); // Build the Swagger config
 
   // Create the Swagger document using the app and config
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
 
   // Setup Swagger at the '/api' endpoint for easier API exploration
 
@@ -54,6 +55,17 @@ async function bootstrap() {
   // Third is the document
   SwaggerModule.setup('api', app, document);
 
+  // Setup the aws sdk used uploading the files to aws s3 bucket
+
+  const configService = app.get(ConfigService);
+
+  config.update({
+    credentials: {
+      accessKeyId: configService.get('appConfig.awsAccessKeyId'),
+      secretAccessKey: configService.get('appConfig.awsSecretAccessKey'),
+    },
+    region: configService.get('appConfig.awsRegion'),
+  });
   // Enable CORS
   app.enableCors();
 

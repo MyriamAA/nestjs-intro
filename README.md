@@ -303,3 +303,19 @@ $ npx nest g interceptor /common/interceptors/data-response --no-spec
 ```
 
 The file should have the intercept method since it implements the NestInterceptor interface
+
+# AWS File uploads
+
+didn't work
+
+```bash
+$ npx nest g module uploads --no-spec
+```
+
+```bash
+$ npx nest g controller uploads --no-spec
+```
+
+```bash
+$ npx nest g service uploads/providers/uploads --flat --no-spec
+```

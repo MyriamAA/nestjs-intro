@@ -19,6 +19,7 @@ import { AccessTokenGuard } from './auth/guards/access-token/access-token.guard'
 import { AuthenticationGuard } from './auth/guards/authentication/authentication.guard';
 import { GoogleAuthenticationService } from './auth/social/providers/google-authentication.service';
 import { DataResponseInterceptor } from './common/interceptors/data-response/data-response.interceptor';
+import { UploadsModule } from './uploads/uploads.module';
 
 /**
  * The AppModule is the root module of the NestJS application.
@@ -96,6 +97,8 @@ const ENV = process.env.NODE_ENV;
     MetaOptionsModule,
 
     PaginationModule,
+
+    UploadsModule,
   ],
 
   /**
