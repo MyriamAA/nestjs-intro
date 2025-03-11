@@ -10,5 +10,5 @@ export default registerAs('appConfig', () => ({
   awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   mailHost: process.env.MAIL_HOST,
   smtpUsername: process.env.SMTP_USERNAME,
-  smtpPassowrd: process.env.SMPT_PASSWORD,
+  smtpPassword: process.env.SMPT_PASSWORD,
 }));
