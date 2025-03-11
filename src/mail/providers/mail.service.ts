@@ -4,26 +4,23 @@ import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class MailService {
-  constructor(
-    /**
-  Inject mailService */
+  constructor(private mailerService: MailerService) {}
 
-    private readonly mailerService: MailerService,
-  ) {}
-
-  public async sendUserWelcome(user: User): Promise<void> {
-    // Mail module default "from" is the no reply email
+  async sendUserWelcome(user: User) {
     await this.mailerService.sendMail({
       to: user.email,
+      // override default from
       from: `Onboarding Team <support@nestjs-blog.com>`,
-      subject: 'Welcome to nestjs blog',
+      subject: 'Welcome to NestJs Blog',
+      // `.ejs` extension is appended automatically to template
       template: './welcome',
+      // Context is available in email template
       context: {
         name: user.firstName,
         email: user.email,
         loginUrl: 'http://localhost:3000',
       },
-      // bcc: 'myriam.abouatmeh@dar.com',
+      bcc: 'myriam.abouatmeh@dar.com',
     });
   }
 }
